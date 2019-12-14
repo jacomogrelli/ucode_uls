@@ -9,9 +9,11 @@
 #include <stdbool.h>
 #include <fcntl.h>
 #include <malloc/malloc.h>
-#include "libmx/inc/libmx.h"
+#include "libmx.h"
 //new for uls
-#include <dirent.h>
+#include <dirent.h> //opendir, readdir http://ru.manpages.org/readdir/3 , closedir
+#include <sys/stat.h> //stat, lstat http://ru.manpages.org/lstat/2
+
 
 
 #endif
