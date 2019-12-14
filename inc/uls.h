@@ -14,6 +14,6 @@
 #include <dirent.h> //opendir, readdir http://ru.manpages.org/readdir/3 , closedir
 #include <sys/stat.h> //stat, lstat http://ru.manpages.org/lstat/2
 
-
+//adding some text from origin/master branch
 
 #endif
