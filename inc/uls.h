@@ -18,6 +18,6 @@
 
 #define FLAGS "l" // add any flag while realizing
 
-void mx_flag_check(int argc, char **argv);
+int mx_flag_check(int argc, char **argv);
 
 #endif
