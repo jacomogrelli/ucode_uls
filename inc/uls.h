@@ -16,4 +16,8 @@
 #include <sys/types.h> //getpwuid, getgrgid, acl_get_file
 #include <sys/ioctl.h> //ioctl,
 
+#define FLAGS "l" // add any flag while realizing
+
+void mx_flag_check(int argc, char **argv);
+
 #endif
