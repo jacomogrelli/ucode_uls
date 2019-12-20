@@ -13,8 +13,10 @@ LMXI:=	$(LMXD)/inc
 INC		=	uls.h
 INCS	=	$(addprefix $(INCD)/, $(INC))
 
-SRC		=	mx_uls_main.c \
-			mx_uls_flag_check.c
+SRC		=	mx_main.c \
+			mx_flag_check.c \
+			mx_empty_flag.c \
+			mx_error_no_such.c
 
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))

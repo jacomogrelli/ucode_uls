@@ -192,7 +192,7 @@ mx_atoi.o
 
 CFLAGS = -std=c11 -Wall -Wextra -Werror -Wpedantic
 
-all: install clean
+all: install
 
 install:
 	@cp $(SRCF) .
