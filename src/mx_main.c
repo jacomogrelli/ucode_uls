@@ -8,8 +8,8 @@
 */
 
 int main (int argc, char **argv) {
-    int flag_count = mx_flag_check(argc, argv);
+    int *flags = NULL;
+    int flag_count = mx_flag_check(argc, argv, &flags);
 
     mx_empty_flag(argc, flag_count, argv);
-    // printf("flag count = %d\n", flag_count);
 }

@@ -16,7 +16,7 @@
 #include <sys/types.h> //getpwuid, getgrgid, acl_get_file
 #include <sys/ioctl.h> //ioctl,
 
-#define FLAGS "l" // add any flag while realizing
+#define FLAGS "ABCFGHLOPRSTUWabcdefghiklmnopqrstuwx1" // add any flag while realizing
 
 typedef struct s_dirent {
     long d_ino;                 /* номер inode */
@@ -42,13 +42,13 @@ typedef struct s_lstat {
 } t_lstat;
 
 typedef struct s_uls_out {
-    char **errors; //массив ошибок
-    char **files; //массив файлов
-    char **folders; //массив папок
+    t_list *errors; //массив ошибок
+    t_list *files; //массив файлов
+    t_list *folders; //массив папок
 } t_uls_out;
 
 
-int mx_flag_check(int argc, char **argv);
+int mx_flag_check(int argc, char **argv, int **flags);
 void mx_empty_flag(int argc, int flag_count, char **argv);
 void mx_error_no_such(char *argv);
 
