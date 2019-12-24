@@ -22,7 +22,7 @@ typedef struct s_dirent {
     long d_ino;                 /* номер inode */
     off_t d_off;                /* смещение на dirent */
     unsigned short d_reclen;    /* длина d_name */
-    char d_name[10];  //???? /* имя файла (оканчивающееся нулем) */
+    char d_name[256];  /* имя файла (оканчивающееся нулем) */
 } t_dirent;
 
 typedef struct s_lstat {
@@ -49,7 +49,7 @@ typedef struct s_uls_out {
 
 
 int mx_flag_check(int argc, char **argv, int **flags);
-void mx_empty_flag(int argc, int flag_count, char **argv);
+void mx_empty_flag(void);
 void mx_error_no_such(char *argv);
 
 #endif

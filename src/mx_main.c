@@ -10,6 +10,8 @@
 int main (int argc, char **argv) {
     int *flags = NULL;
     int flag_count = mx_flag_check(argc, argv, &flags);
+    if (flag_count > 0) //временная хуйня, убрать при первом использовании
 
-    mx_empty_flag(argc, flag_count, argv);
+    if (argc == 1 || (argc == 2 && mx_strcmp(argv[1], "--") == 0))
+        mx_empty_flag();
 }

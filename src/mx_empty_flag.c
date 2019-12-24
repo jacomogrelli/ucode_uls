@@ -4,19 +4,25 @@
 * починить сигфолт на пушбек
 */
 
-void mx_empty_flag(int argc, int flag_count, char **argv) {
-    struct stat buf;
-    t_uls_out *result = malloc(sizeof(t_uls_out));
-    // char *res;
+void mx_empty_flag(void) {
+    DIR *dirp;
+    t_list *list = malloc(sizeof(t_list));
+    t_list *HEAD = list;
+    struct dirent *buf;
 
-
-    for (int res; flag_count < argc; flag_count++) {
-        res = lstat(argv[flag_count], &buf);
-        if (res == -1)
-            mx_push_front(&result->errors, argv[flag_count]);
-        if ((buf.st_mode & S_IFMT) == S_IFDIR)
-            mx_push_front(&result->folders, argv[flag_count]);
-        if ((buf.st_mode & S_IFMT) == S_IFREG)
-            mx_push_front(&result->files, argv[flag_count]);
+    dirp = opendir(".");
+    while ((buf = readdir(dirp)) != 0) {
+        mx_push_front(&list, buf->d_name);
+        // printf("%s - ", list->data);
+        // list = list->next;
     }
+    if (closedir(dirp) < 0)
+        exit(-1);
+    list = HEAD;
+    printf("%s  ", list->data);
+    while (list) {
+        printf("%s  ", list->data);
+        list = list->next;
+    }
+    exit(0);
 }
