@@ -14,4 +14,5 @@ int main (int argc, char **argv) {
 
     if (argc == 1 || (argc == 2 && mx_strcmp(argv[1], "--") == 0))
         mx_empty_flag();
+    return 0;
 }

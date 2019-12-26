@@ -8,7 +8,7 @@ OBJD	=	obj
 
 LMXD	=	libmx
 LMXA:=	$(LMXD)/libmx.a
-LMXI:=	$(LMXD)/inc
+LMXI:=	$(LMXD)/$(INCD)
 
 INC		=	uls.h
 INCS	=	$(addprefix $(INCD)/, $(INC))
@@ -16,7 +16,8 @@ INCS	=	$(addprefix $(INCD)/, $(INC))
 SRC		=	mx_main.c \
 			mx_flag_check.c \
 			mx_empty_flag.c \
-			mx_error_no_such.c
+			mx_error_no_such.c \
+			mx_ascii_sort_list.c \
 
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))

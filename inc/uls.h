@@ -51,5 +51,6 @@ typedef struct s_uls_out {
 int mx_flag_check(int argc, char **argv, int **flags);
 void mx_empty_flag(void);
 void mx_error_no_such(char *argv);
+t_list *mx_ascii_sort_list(t_list *lst);
 
 #endif
