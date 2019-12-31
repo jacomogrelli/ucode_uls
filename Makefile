@@ -18,6 +18,7 @@ SRC		=	mx_main.c \
 			mx_empty_flag.c \
 			mx_error_no_such.c \
 			mx_ascii_sort_list.c \
+			mx_basic.c \
 
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))

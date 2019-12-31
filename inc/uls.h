@@ -18,28 +18,28 @@
 
 #define FLAGS "ABCFGHLOPRSTUWabcdefghiklmnopqrstuwx1" // add any flag while realizing
 
-typedef struct s_dirent {
-    long d_ino;                 /* номер inode */
-    off_t d_off;                /* смещение на dirent */
-    unsigned short d_reclen;    /* длина d_name */
-    char d_name[256];  /* имя файла (оканчивающееся нулем) */
-} t_dirent;
+// typedef struct s_dirent {
+//     long d_ino;                 /* номер inode */
+//     off_t d_off;                /* смещение на dirent */
+//     unsigned short d_reclen;    /* длина d_name */
+//     char d_name[256];  /* имя файла (оканчивающееся нулем) */
+// } t_dirent;
 
-typedef struct s_lstat {
-    dev_t st_dev;           //устройство
-    ino_t st_ino;           //inode
-    mode_t st_mode;         //режим доступа
-    nlink_t st_nlink;       //количество жестких ссылок
-    uid_t st_uid;           //идентификатор пользователя-владельца
-    gid_t st_gid;           //идентификатор группы-владельца
-    dev_t st_rdev;          //тип устройства, (если это устройство)
-    off_t st_size;          //общий размер в байтах
-    blksize_t st_blksize;   //размер блока ввода-вывода, в файловой системе
-    blkcnt_t st_blocks;     //количество выделенных блоков
+// typedef struct s_lstat {
+    // dev_t st_dev;           //устройство
+    // ino_t st_ino;           //inode
+    // mode_t st_mode;         //режим доступа
+    // nlink_t st_nlink;       //количество жестких ссылок
+    // uid_t st_uid;           //идентификатор пользователя-владельца
+    // gid_t st_gid;           //идентификатор группы-владельца
+    // dev_t st_rdev;          //тип устройства, (если это устройство)
+    // off_t st_size;          //общий размер в байтах
+    // blksize_t st_blksize;   //размер блока ввода-вывода, в файловой системе
+    // blkcnt_t st_blocks;     //количество выделенных блоков
     // time_t        st_atime;    /* время последнего доступа */
-    // time_t        st_mtime;    /* время последней модификации */
+    // time_t st_mtime;    /* время последней модификации */
     // time_t        st_ctime;    /* время последнего изменения */
-} t_lstat;
+// } t_lstat;
 
 typedef struct s_uls_out {
     t_list *errors; //массив ошибок
@@ -48,6 +48,7 @@ typedef struct s_uls_out {
 } t_uls_out;
 
 
+void mx_basic(int argc, char **argv, int flag_count);
 int mx_flag_check(int argc, char **argv, int **flags);
 void mx_empty_flag(void);
 void mx_error_no_such(char *argv);

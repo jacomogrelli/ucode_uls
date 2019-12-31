@@ -9,6 +9,7 @@ char *mx_replace_substr(const char *str, const char *sub, const char *replace)
     const char *s = str;
     int len_s = 0;
     int len_r = 0;
+    
     if ((!str) || (!sub) || (!replace))
         return NULL;
     get_all_lengths(&len_s, &len_r, (char *)sub, (char *)replace);
