@@ -33,6 +33,6 @@ void mx_empty_flag(void) {
         printf("%s  ", HEAD->data);
         HEAD = HEAD->next;
     }
-    system("leaks uls");
+    // system("leaks uls");
     exit(0);
 }
