@@ -19,7 +19,10 @@ SRC		=	mx_main.c \
 			mx_error_no_such.c \
 			mx_ascii_sort_list.c \
 			mx_basic.c \
-
+			mx_lstat_fill.c \
+			mx_get_owner.c \
+			mx_get_mtime.c \
+			mx_get_group.c \
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
 OBJS	=	$(addprefix $(OBJD)/, $(SRC:%.c=%.o))
