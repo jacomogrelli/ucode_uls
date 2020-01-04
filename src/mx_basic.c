@@ -1,7 +1,7 @@
 #include "uls.h"
 /*
-* mx_lstat_fill заполняет структуру со всеми данными о файле
-*/
+ * mx_lstat_fill заполняет структуру со всеми данными о файле
+ */
 static t_uls_out *uls_res_init();
 
 void mx_basic(int argc, char **argv, int flag_count) {
