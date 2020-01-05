@@ -25,6 +25,8 @@ SRC		=	mx_main.c \
 			mx_get_group.c \
 			mx_get_permission.c \
 			mx_get_perm_type.c \
+			mx_get_name.c \
+			mx_get_plink.c \
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
 OBJS	=	$(addprefix $(OBJD)/, $(SRC:%.c=%.o))

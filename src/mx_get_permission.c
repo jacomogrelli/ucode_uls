@@ -29,7 +29,6 @@ char *mx_get_permission(mode_t st_mode) {
     res[8] = (st_mode & S_IWOTH) ? 'w' : '-';
     res[9] = get_mode(st_mode, 3);
     res[10] = '0';
-
     return res;
 }
 

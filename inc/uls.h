@@ -14,6 +14,7 @@
 #include <dirent.h> //opendir, readdir, closedir
 #include <sys/stat.h> //stat, lstat
 #include <sys/types.h> //acl_get_file
+#include <sys/acl.h> //acl_get_file, acl_to_text, acl_free
 #include <pwd.h> //getpwuid
 #include <grp.h> //getgrgid
 #include <sys/ioctl.h> //ioctl
@@ -32,16 +33,19 @@
 typedef struct s_lstat {
     // dev_t st_dev;           //устройство
     // ino_t st_ino;           //inode
-    char *mode;//mode_t st_mode, режим доступа
-    int nlink;       //количество жестких ссылок
-    char *own_name; //имя пользователя-владельца
-    char *group; // gid_t st_gid, идентификатор группы-владельца
+    char *name;             //name of file
+    char *path;             //path to file, argv[i]
+    char *mode;             //mode_t st_mode, режим доступа
+    int nlink;              //количество жестких ссылок
+    char *plink;            //" -> [link path]"
+    char *own_name;         //имя пользователя-владельца
+    char *group;            // gid_t st_gid, идентификатор группы-владельца
     // dev_t st_rdev;          //тип устройства, (если это устройство)
-    unsigned long size_b; // off_t st_size, общий размер в байтах
+    unsigned long size_b;   // off_t st_size, общий размер в байтах
     // blksize_t st_blksize;   //размер блока ввода-вывода, в файловой системе
     // blkcnt_t st_blocks;     //количество выделенных блоков
     // time_t        st_atime;    /* время последнего доступа */
-    char *mtime;//time_t st_mtime, время последней модификации
+    char *mtime;            //time_t st_mtime, время последней модификации
     // time_t        st_ctime;    /* время последнего изменения */
     struct s_lstat *next;
 } t_lstat;
@@ -59,11 +63,13 @@ void mx_error_no_such(char *argv);
 t_list *mx_ascii_sort_list(t_list *lst);
 
 //------Filling any information about file/link/dir pack------
-t_lstat *mx_lstat_fill(struct stat buf);
+t_lstat *mx_lstat_fill(struct stat buf, char *argv);
 char *mx_get_owner(uid_t st_uid);
 char *mx_get_group(gid_t st_gid);
+char *mx_get_name(char *argv);
 char *mx_get_mtime(struct timespec stmtime);
 char *mx_get_permission(mode_t st_mode);
 char mx_get_perm_type(mode_t st_mode);
+char *mx_get_plink(char *argv, unsigned long size_b, char p);
 
 #endif

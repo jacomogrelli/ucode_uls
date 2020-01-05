@@ -10,9 +10,9 @@ void mx_basic(int argc, char **argv, int flag_count) {
     t_lstat *temp = NULL;
 
     for (;flag_count < argc; flag_count++) {
-        if (stat(argv[flag_count], &buf) < 0)
+        if (lstat(argv[flag_count], &buf) < 0)
            mx_push_back(&res->errors, argv[flag_count]);
-        temp = mx_lstat_fill(buf);
+        temp = mx_lstat_fill(buf, argv[flag_count]);
     }
 
 

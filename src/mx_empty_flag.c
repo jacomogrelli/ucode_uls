@@ -29,7 +29,7 @@ void mx_empty_flag(void) {
         exit(-1);
     list = mx_ascii_sort_list(list);
     HEAD = list;
-    while (HEAD) {
+    while (HEAD) {       //временная хуйня, НЕ ЗАБЫТЬ УБРАТЬ!!!
         printf("%s  ", HEAD->data);
         HEAD = HEAD->next;
     }

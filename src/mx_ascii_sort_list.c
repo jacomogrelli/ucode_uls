@@ -1,6 +1,11 @@
-    #include "libmx.h"
+#include "libmx.h"
 
-    t_list *mx_ascii_sort_list(t_list *lst) {
+/*
+ * DONE
+ * Функция сортирует связанный список по ASCII
+ */
+
+t_list *mx_ascii_sort_list(t_list *lst) {
     void *tmp;
 
 	if (!lst)
