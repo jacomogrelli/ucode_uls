@@ -30,6 +30,10 @@
 #define MX_ISLNK(m)      (((m) & S_IFMT) == S_IFLNK)  /* 'l'symbolic link */
 #define MX_ISSOCK(m)     (((m) & S_IFMT) == S_IFSOCK) /* 's'socket */
 
+//------macros pack for getting major and minor------
+#define MX_GETMAJ(x)     ((int32_t)(((u_int32_t)(x) >> 24) & 0xff))
+#define MX_GETMIN(x)     ((int32_t)((x) & 0xffffff))
+
 typedef struct s_lstat {
     // dev_t st_dev;           //устройство
     // ino_t st_ino;           //inode
@@ -37,11 +41,11 @@ typedef struct s_lstat {
     char *path;             //path to file, argv[i]
     char *mode;             //mode_t st_mode, режим доступа
     int nlink;              //количество жестких ссылок
-    char *plink;            //" -> [link path]"
+    char *plink;            //"[link path]"
     char *own_name;         //имя пользователя-владельца
     char *group;            // gid_t st_gid, идентификатор группы-владельца
     // dev_t st_rdev;          //тип устройства, (если это устройство)
-    unsigned long size_b;   // off_t st_size, общий размер в байтах
+    char *size_b;   // off_t st_size, общий размер в байтах
     // blksize_t st_blksize;   //размер блока ввода-вывода, в файловой системе
     // blkcnt_t st_blocks;     //количество выделенных блоков
     // time_t        st_atime;    /* время последнего доступа */
@@ -70,6 +74,7 @@ char *mx_get_name(char *argv);
 char *mx_get_mtime(struct timespec stmtime);
 char *mx_get_permission(mode_t st_mode);
 char mx_get_perm_type(mode_t st_mode);
-char *mx_get_plink(char *argv, unsigned long size_b, char p);
+char *mx_get_plink(char *argv, off_t st_size, char p);
+char *mx_get_size(struct stat buf);
 
 #endif
