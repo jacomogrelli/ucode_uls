@@ -28,6 +28,7 @@ SRC		=	mx_main.c \
 			mx_get_name.c \
 			mx_get_plink.c \
 			mx_get_size.c \
+			mx_get_perm_10.c \
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
 OBJS	=	$(addprefix $(OBJD)/, $(SRC:%.c=%.o))

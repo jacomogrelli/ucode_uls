@@ -1,21 +1,19 @@
 #include "uls.h"
 
 /*
+ * DONE
  * Функция возвращает строку длинной 11 символов, в которую записываются пра-
  * ва доступа к файлу.
  * Статик get_mode принимает st_mode, идентификатор, для какого типа пользоват
  * елей будет происходить поиск необходимого атрибута. Далее, в зависимости от
  * идентификатора значения передаются в get_char_s или get_char_t
- *
- * НЕ РЕАЛИЗОВАНО:
- * получение последнего символа @(acl) или +(xattr)
  */
 
 static char get_mode(mode_t st_mode, int user_type);
 static char get_char_s(mode_t st_mode, int is_exec, int is_id);
 static char get_char_t(mode_t st_mode, int is_exec, int is_id);
 
-char *mx_get_permission(mode_t st_mode) {
+char *mx_get_permission(mode_t st_mode, char *path) {
     char *res = mx_strnew(11);
 
     res[0] = mx_get_perm_type(st_mode);
@@ -28,7 +26,7 @@ char *mx_get_permission(mode_t st_mode) {
     res[7] = (st_mode & S_IROTH) ? 'r' : '-';
     res[8] = (st_mode & S_IWOTH) ? 'w' : '-';
     res[9] = get_mode(st_mode, 3);
-    res[10] = '0';
+    res[10] = mx_get_perm_10(path);
     return res;
 }
 

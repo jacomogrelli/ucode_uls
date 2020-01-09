@@ -13,11 +13,12 @@
 //new for uls
 #include <dirent.h> //opendir, readdir, closedir
 #include <sys/stat.h> //stat, lstat
-#include <sys/types.h> //acl_get_file
+#include <sys/types.h>
 #include <sys/acl.h> //acl_get_file, acl_to_text, acl_free
 #include <pwd.h> //getpwuid
 #include <grp.h> //getgrgid
 #include <sys/ioctl.h> //ioctl
+#include <sys/xattr.h> //listxattr, getxattr
 
 #define FLAGS "ABCFGHLOPRSTUWabcdefghiklmnopqrstuwx1" // add any flag while realizing
 
@@ -72,9 +73,10 @@ char *mx_get_owner(uid_t st_uid);
 char *mx_get_group(gid_t st_gid);
 char *mx_get_name(char *argv);
 char *mx_get_mtime(struct timespec stmtime);
-char *mx_get_permission(mode_t st_mode);
+char *mx_get_permission(mode_t st_mode, char *path);
 char mx_get_perm_type(mode_t st_mode);
 char *mx_get_plink(char *argv, off_t st_size, char p);
 char *mx_get_size(struct stat buf);
+char mx_get_perm_10(char *path);
 
 #endif
