@@ -18,7 +18,6 @@ SRC		=	mx_main.c \
 			mx_empty_flag.c \
 			mx_error_no_such.c \
 			mx_ascii_sort_list.c \
-			mx_basic.c \
 			mx_lstat_fill.c \
 			mx_get_owner.c \
 			mx_get_mtime.c \
@@ -29,6 +28,8 @@ SRC		=	mx_main.c \
 			mx_get_plink.c \
 			mx_get_size.c \
 			mx_get_perm_10.c \
+			mx_get_args.c \
+			mx_free_t_lstat.c \
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
 OBJS	=	$(addprefix $(OBJD)/, $(SRC:%.c=%.o))
@@ -52,6 +53,7 @@ $(OBJD):
 
 $(LMXA):
 	@make -sC $(LMXD)
+
 clean:
 	@make -sC $(LMXD) $@
 	@rm -rf $(OBJD)

@@ -20,7 +20,7 @@
 #include <sys/ioctl.h> //ioctl
 #include <sys/xattr.h> //listxattr, getxattr
 
-#define FLAGS "ABCFGHLOPRSTUWabcdefghiklmnopqrstuwx1" // add any flag while realizing
+#define FLAGS "l" // add any flag while realizing
 
 //------macros pack for definition of type------
 #define MX_ISBLK(m)      (((m) & S_IFMT) == S_IFBLK)  /* 'b'lock special */
@@ -52,7 +52,7 @@ typedef struct s_lstat {
     // time_t        st_atime;    /* время последнего доступа */
     char *mtime;            //time_t st_mtime, время последней модификации
     // time_t        st_ctime;    /* время последнего изменения */
-    struct s_lstat *next;
+    // struct s_lstat *next;
 } t_lstat;
 
 typedef struct s_uls_out {
@@ -61,11 +61,13 @@ typedef struct s_uls_out {
     t_list *folders; //массив папок
 } t_uls_out;
 
-void mx_basic(int argc, char **argv, int flag_count);
+// void mx_basic(int argc, char **argv, int flag_count);
 int mx_flag_check(int argc, char **argv, int **flags);
 void mx_empty_flag(void);
 void mx_error_no_such(char *argv);
 t_list *mx_ascii_sort_list(t_list *lst);
+void mx_get_args(int argc, int flag, char **argv, int *flags);
+void mx_free_t_lstat (t_lstat *temp);
 
 //------Filling any information about file/link/dir pack------
 t_lstat *mx_lstat_fill(struct stat buf, char *argv);
