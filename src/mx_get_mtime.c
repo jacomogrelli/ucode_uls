@@ -29,12 +29,12 @@ char *mx_get_mtime(struct timespec stmtime) {
 static char *uls_date_more6(char *buf) {
     char *res = mx_strnew(12);
 
-    res[0] = buf[8];
-    res[1] = buf[9];
-    res[2] = ' ';
-    res[3] = buf[4] + 32;
-    res[4] = buf[5];
-    res[5] = buf[6];
+    res[0] = buf[4];
+    res[1] = buf[5];
+    res[2] = buf[6];
+    res[3] = ' ';
+    res[4] = buf[8];
+    res[5] = buf[9];
     res[6] = ' ';
     res[7] = ' ';
     res[8] = buf[20];
@@ -47,12 +47,12 @@ static char *uls_date_more6(char *buf) {
 static char *uls_date_less6(char *buf) {
     char *res = mx_strnew(12);
 
-    res[0] = buf[8];
-    res[1] = buf[9];
-    res[2] = ' ';
-    res[3] = buf[4] + 32;
-    res[4] = buf[5];
-    res[5] = buf[6];
+    res[0] = buf[4];
+    res[1] = buf[5];
+    res[2] = buf[6];
+    res[3] = ' ';
+    res[4] = buf[8];
+    res[5] = buf[9];
     res[6] = ' ';
     res[7] = buf[11];
     res[8] = buf[12];

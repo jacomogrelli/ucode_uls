@@ -53,6 +53,7 @@ typedef struct s_lstat {
     char *mtime;            //time_t st_mtime, время последней модификации
     // time_t        st_ctime;    /* время последнего изменения */
     // struct s_lstat *next;
+    struct s_lstat *next;
 } t_lstat;
 
 typedef struct s_uls_out {
@@ -80,5 +81,6 @@ char mx_get_perm_type(mode_t st_mode);
 char *mx_get_plink(char *argv, off_t st_size, char p);
 char *mx_get_size(struct stat buf);
 char mx_get_perm_10(char *path);
+int mx_get_winsize(void);
 
 #endif
