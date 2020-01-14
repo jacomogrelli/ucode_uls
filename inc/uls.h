@@ -67,7 +67,7 @@ int mx_flag_check(int argc, char **argv, int **flags);
 void mx_empty_flag(void);
 void mx_error_no_such(char *argv);
 t_list *mx_ascii_sort_list(t_list *lst);
-void mx_get_args(int argc, int flag, char **argv, int *flags);
+t_uls_out *mx_get_args(int argc, int flag, char **argv, int *flags);
 void mx_free_t_lstat (t_lstat *temp);
 
 //------Filling any information about file/link/dir pack------
@@ -82,5 +82,6 @@ char *mx_get_plink(char *argv, off_t st_size, char p);
 char *mx_get_size(struct stat buf);
 char mx_get_perm_10(char *path);
 int mx_get_winsize(void);
+void mx_output_error(t_list *err);
 
 #endif

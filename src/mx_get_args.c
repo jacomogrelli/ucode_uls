@@ -2,7 +2,7 @@
 
 static t_uls_out *uls_res_init();
 
-void mx_get_args(int argc, int flag, char **argv, int *flags) {
+t_uls_out *mx_get_args(int argc, int flag, char **argv, int *flags) {
     struct stat buf;
     t_uls_out *res = uls_res_init();
     t_lstat *temp = NULL;
@@ -22,6 +22,7 @@ void mx_get_args(int argc, int flag, char **argv, int *flags) {
         mx_push_back(&res->files, temp);
         mx_free_t_lstat(temp);
     }
+    return res;
 }
 
 static t_uls_out *uls_res_init(void) {

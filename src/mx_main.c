@@ -10,9 +10,11 @@
 int main (int argc, char **argv) {
     int *flags = NULL;
     int flag_count = mx_flag_check(argc, argv, &flags);
+    t_uls_out *all = NULL;
     // mx_printint(flags[0]);
 
-    mx_get_args(argc, flag_count, argv, flags);
+    all = mx_get_args(argc, flag_count, argv, flags);
+    mx_output_error(all->errors);
     // if (flag_count > 0) //временная, убрать при первом использовании
     // if (argc > flag_count)
     //     mx_basic(argc, argv, flag_count);
