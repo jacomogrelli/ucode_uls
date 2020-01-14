@@ -32,7 +32,7 @@ char *mx_get_size(struct stat buf) {
 }
 
 static char *get_minor(dev_t rdev) {
-    if (MX_GETMIN(rdev) > 256) {
+    if (MX_GETMIN(rdev) > 255) {
         return get_hex(12, mx_nbr_to_hex(MX_GETMIN(rdev)));
     }
     return get_int(5, mx_itoa(MX_GETMIN(rdev)));

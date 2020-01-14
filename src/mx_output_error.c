@@ -6,11 +6,14 @@
  */
 
 void mx_output_error(t_list *err) {
-    if(!err)
+    DIR *dptr;
+    
+    if (!err)
         return;
     mx_ascii_sort_list(err);
-    while(err) {
-        mx_error_no_such(err->data);
+    while (err) {
+        if ((dptr = opendir(err->data)) == NULL)
+            mx_error_no_such(err->data);
         err = err->next;
     }
     return;
