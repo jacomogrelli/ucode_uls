@@ -20,7 +20,7 @@
 #include <sys/ioctl.h> //ioctl
 #include <sys/xattr.h> //listxattr, getxattr
 
-#define FLAGS "l" // add any flag while realizing
+#define FLAGS "Aal" // add any flag while realizing
 
 //------macros pack for definition of type------
 #define MX_ISBLK(m)      (((m) & S_IFMT) == S_IFBLK)  /* 'b'lock special */
@@ -64,11 +64,12 @@ typedef struct s_uls_out {
 
 // void mx_basic(int argc, char **argv, int flag_count);
 int mx_flag_check(int argc, char **argv, int **flags);
-void mx_empty_flag(void);
+t_list *mx_empty_flag(int *flags);
 void mx_error_no_such(char *argv);
 t_list *mx_ascii_sort_list(t_list *lst);
 t_uls_out *mx_get_args(int argc, int flag, char **argv, int *flags);
 void mx_free_t_lstat (t_lstat *temp);
+int mx_get_winsize(void);
 
 //------Filling any information about file/link/dir pack------
 t_lstat *mx_lstat_fill(struct stat buf, char *argv);
@@ -81,7 +82,9 @@ char mx_get_perm_type(mode_t st_mode);
 char *mx_get_plink(char *argv, off_t st_size, char p);
 char *mx_get_size(struct stat buf);
 char mx_get_perm_10(char *path);
-int mx_get_winsize(void);
+
+//------Output pack
 void mx_output_error(t_list *err);
+void mx_output_files(t_list *files, int *flags);
 
 #endif

@@ -32,6 +32,7 @@ SRC		=	mx_main.c \
 			mx_free_t_lstat.c \
 			mx_get_winsize.c \
 			mx_output_error.c \
+			mx_output_files.c \
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
 OBJS	=	$(addprefix $(OBJD)/, $(SRC:%.c=%.o))

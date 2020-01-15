@@ -9,10 +9,10 @@ t_uls_out *mx_get_args(int argc, int flag, char **argv, int *flags) {
 
     if (flags != NULL) //временная хуйня, убрать
 
-
-    if (argc == 1 || (argc == 2 && mx_strcmp(argv[1], "--") == 0))
-        mx_empty_flag();
-
+    if (argc == flag) {
+        res->files = mx_empty_flag(flags);
+        return res;
+    }
     for (;flag < argc; flag++) {
         if (lstat(argv[flag], &buf) < 0)
            mx_push_back(&res->errors, argv[flag]);

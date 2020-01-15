@@ -7,7 +7,7 @@
 
 void mx_output_error(t_list *err) {
     DIR *dptr;
-    
+
     if (!err)
         return;
     mx_ascii_sort_list(err);
