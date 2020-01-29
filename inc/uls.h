@@ -53,6 +53,7 @@ typedef struct s_lstat {
     char *mtime;            //time_t st_mtime, время последней модификации
     // time_t        st_ctime;    /* время последнего изменения */
     // struct s_lstat *next;
+    struct s_lstat *dirlist;
     struct s_lstat *next;
 } t_lstat;
 
@@ -83,6 +84,7 @@ char mx_get_perm_type(mode_t st_mode);
 char *mx_get_plink(char *argv, off_t st_size, char p);
 char *mx_get_size(struct stat buf);
 char mx_get_perm_10(char *path);
+void mx_get_dirlist(t_uls_out *all, int *flags);
 
 //------Output pack------
 void mx_output_error(t_list *err);

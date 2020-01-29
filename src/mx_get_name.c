@@ -11,6 +11,8 @@ char *mx_get_name(char *argv) {
     int len = mx_strlen(argv);
     int name_len = 0;
 
+    if (argv[len - 1] == '/')
+        len -= 1;
     for (int i = len - 1; i >= 0 && argv[i] != '/'; i--) {
         name_len++;
     }
