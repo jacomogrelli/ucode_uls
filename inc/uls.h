@@ -20,7 +20,7 @@
 #include <sys/ioctl.h> //ioctl
 #include <sys/xattr.h> //listxattr, getxattr
 
-#define FLAGS "Aal" // add any flag while realizing
+#define FLAGS "AGRalo" // add any flag while realizing
 
 //------macros pack for definition of type------
 #define MX_ISBLK(m)      (((m) & S_IFMT) == S_IFBLK)  /* 'b'lock special */
@@ -83,7 +83,7 @@ char *mx_get_plink(char *argv, off_t st_size, char p);
 char *mx_get_size(struct stat buf);
 char mx_get_perm_10(char *path);
 
-//------Output pack
+//------Output pack------
 void mx_output_error(t_list *err);
 void mx_output_files(t_list *files, int *flags);
 

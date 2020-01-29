@@ -7,8 +7,6 @@ t_uls_out *mx_get_args(int argc, int flag, char **argv, int *flags) {
     t_uls_out *res = uls_res_init();
     t_lstat *temp = NULL;
 
-    if (flags != NULL) //временная хуйня, убрать
-
     if (argc == flag) {
         res->files = mx_empty_flag(flags);
         return res;

@@ -8,8 +8,6 @@
  */
 
 int main (int argc, char **argv) {
-    if (!isatty(1))
-    mx_printstr("est cat -e");
     int *flags = NULL;
     int flag_count = mx_flag_check(argc, argv, &flags);
     t_uls_out *all = NULL;
