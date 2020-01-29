@@ -34,6 +34,7 @@ SRC		=	mx_main.c \
 			mx_output_error.c \
 			mx_output_files.c \
 			mx_push_stat.c \
+			mx_output_folders.c \
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
 OBJS	=	$(addprefix $(OBJD)/, $(SRC:%.c=%.o))

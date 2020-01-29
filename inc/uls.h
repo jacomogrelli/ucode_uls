@@ -90,4 +90,6 @@ void mx_output_error(t_list *err);
 void mx_output_files(t_lstat *out, int *flags);
 void mx_push_stat(t_lstat **list, void *data);
 
+void mx_output_folders(t_uls_out *out, int *flags);
+
 #endif

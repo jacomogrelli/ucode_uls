@@ -16,10 +16,8 @@ int main (int argc, char **argv) {
     all = mx_get_args(argc, flag_count, argv, flags);
     mx_output_error(all->errors);
     mx_output_files(all->files, flags);
-    // while(all->files) {
-    //     printf("%s ", all->files->name);
-    //     all->files = all->files->next;
-    // }
+    mx_output_folders(all, flags);
+
     // if (flag_count > 0) //временная, убрать при первом использовании
     // if (argc > flag_count)
     //     mx_basic(argc, argv, flag_count);
