@@ -58,13 +58,14 @@ typedef struct s_lstat {
 
 typedef struct s_uls_out {
     t_list *errors; //массив ошибок
-    t_list *files; //массив файлов
+    t_lstat *files; //массив файлов
     t_list *folders; //массив папок
 } t_uls_out;
 
 // void mx_basic(int argc, char **argv, int flag_count);
 int mx_flag_check(int argc, char **argv, int **flags);
-t_list *mx_empty_flag(int *flags);
+// t_list *mx_empty_flag(int *flags);
+t_list *mx_empty_flag(int *flags, char *dir);
 void mx_error_no_such(char *argv);
 t_list *mx_ascii_sort_list(t_list *lst);
 t_uls_out *mx_get_args(int argc, int flag, char **argv, int *flags);
@@ -85,6 +86,8 @@ char mx_get_perm_10(char *path);
 
 //------Output pack------
 void mx_output_error(t_list *err);
-void mx_output_files(t_list *files, int *flags);
+// void mx_output_files(t_list *files, int *flags);
+void mx_output_files(t_lstat *out, int *flags);
+void mx_push_stat(t_lstat **list, void *data);
 
 #endif

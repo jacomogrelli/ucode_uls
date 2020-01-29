@@ -9,12 +9,12 @@
  * (нулевой элемент d_name ".").
  */
 
-t_list *mx_empty_flag(int *flags) {
+t_list *mx_empty_flag(int *flags, char *dir) {
     DIR *dirp;
     t_list *list = NULL;
     struct dirent *buf;
 
-    dirp = opendir(".");
+    dirp = opendir(dir);
     while ((buf = readdir(dirp)) != NULL) {
         if (flags[mx_get_char_index(FLAGS, 'a')])
             mx_push_back(&list, buf->d_name);
