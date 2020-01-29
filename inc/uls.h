@@ -20,7 +20,7 @@
 #include <sys/ioctl.h> //ioctl
 #include <sys/xattr.h> //listxattr, getxattr
 
-#define FLAGS "AGRaloaksdhfg" // add any flag while realizing
+#define FLAGS "AGRalo" // add any flag while realizing
 
 //------macros pack for definition of type------
 #define MX_ISBLK(m)      (((m) & S_IFMT) == S_IFBLK)  /* 'b'lock special */
