@@ -17,7 +17,7 @@ int main (int argc, char **argv) {
     mx_output_error(all->errors);
     mx_output_files(all->files, flags);
     mx_get_dirlist(all, flags);
-    mx_output_folders(all, flags);
+    // mx_output_folders(all, flags);
 
     // if (flag_count > 0) //временная, убрать при первом использовании
     // if (argc > flag_count)

@@ -18,7 +18,7 @@ t_lstat *mx_lstat_fill(struct stat buf, char *argv) {
     res->own_name = mx_get_owner(buf.st_uid);
     res->group = mx_get_group(buf.st_gid);
     res->mtime = mx_get_mtime(buf.st_mtimespec);
-    res->dirlist = NULL;
+    // res->dirlist = NULL;
     res->next = NULL;
     // mx_printstr(res->mode);
     // system("leaks -q uls");

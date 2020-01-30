@@ -29,5 +29,6 @@ static t_uls_out *uls_res_init(void) {
     res->errors = NULL;
     res->files = NULL;
     res->folders = NULL;
+    res->dirlist = NULL;
     return res;
 }

@@ -53,7 +53,6 @@ typedef struct s_lstat {
     char *mtime;            //time_t st_mtime, время последней модификации
     // time_t        st_ctime;    /* время последнего изменения */
     // struct s_lstat *next;
-    struct s_lstat *dirlist;
     struct s_lstat *next;
 } t_lstat;
 
@@ -61,6 +60,7 @@ typedef struct s_uls_out {
     t_list *errors; //массив ошибок
     t_lstat *files; //массив файлов
     t_list *folders; //массив папок
+    t_lstat *dirlist;
 } t_uls_out;
 
 // void mx_basic(int argc, char **argv, int flag_count);
@@ -72,6 +72,7 @@ t_list *mx_ascii_sort_list(t_list *lst);
 t_uls_out *mx_get_args(int argc, int flag, char **argv, int *flags);
 void mx_free_t_lstat (t_lstat *temp);
 int mx_get_winsize(void);
+char *mx_namejoin(char *name1, char *name2);
 
 //------Filling any information about file/link/dir pack------
 t_lstat *mx_lstat_fill(struct stat buf, char *argv);
