@@ -28,33 +28,28 @@ void mx_get_dirlist(t_uls_out *all, int *flags) {
 static t_list *get_subdir(t_list *folders, int *flags) {
     DIR *dirp;
     struct dirent *buf;
-    // t_list *head = NULL;
+    t_list *head = folders;
     struct stat buf2;
-    if (!folders || !mx_get_char_index(FLAGS, 'R'))
+
+    if (!flags[mx_get_char_index(FLAGS, 'R')])
         return folders;
-    // while (folders) {
-        dirp = opendir(folders->data);
+    while (head) {
+        dirp = opendir(head->data);
         while ((buf = readdir(dirp)) != NULL) {
-            if (mx_strcmp(buf->d_name, ".") != 0 && mx_strcmp(buf->d_name, "..") != 0) {
-                if (lstat(mx_namejoin(folders->data, buf->d_name), &buf2) >= 0) {
-        // printf("current folder %s\n", folders->data);
-                    // mx_printlist(folders);
+            if (mx_strcmp(buf->d_name, ".") != 0
+                && mx_strcmp(buf->d_name, "..") != 0) {
+                if (lstat(mx_namejoin(head->data, buf->d_name), &buf2) >= 0) {
                     if (MX_ISDIR(buf2.st_mode)) {
-                        mx_push_back(&folders,
-                        mx_namejoin(folders->data, buf->d_name));
-                        folders = folders->next;
-                        folders = get_subdir(folders, flags);
+                        mx_push_back(&head,
+                        mx_namejoin(head->data, buf->d_name));
                     }
                 }
-                else
-                    continue;
             }
-            else
-                continue;
-
-        // }
+        }
         if (closedir(dirp) < 0)
             exit (-1);
+        head = head->next;
     }
+    mx_printlist(folders);
     return folders;
 }

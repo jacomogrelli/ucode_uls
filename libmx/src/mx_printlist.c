@@ -5,7 +5,7 @@ void mx_printlist(t_list *list) {
 
     while (head->next != NULL) {
         mx_printstr(head->data);
-        mx_printstr(" ");
+        mx_printstr("\n");
         head = head->next;
     }
     mx_printstr(head->data);
