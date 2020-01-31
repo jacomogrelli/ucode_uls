@@ -20,6 +20,8 @@ void mx_output_files(t_lstat *out, int *flags) {
 
 void mx_default_l(t_lstat *o) {
      for (;o; o = o->next) {
+        mx_printint(o->total);
+        mx_printstr("\n");
         mx_printstr(o->mode);
         mx_printstr(" ");
         mx_printint(o->nlink);
