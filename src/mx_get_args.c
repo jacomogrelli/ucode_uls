@@ -17,7 +17,7 @@ if (flags != NULL) // delete
             if (MX_ISDIR(buf.st_mode))
                 mx_push_back(&res->folders, argv[flag]);
             else
-                mx_push_stat(&res->files, mx_lstat_fill(buf, argv[flag]));
+                mx_push_stat(&res->files, mx_lstat_fill(buf, argv[flag], flags));
         }
     }
     return res;

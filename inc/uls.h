@@ -20,7 +20,21 @@
 #include <sys/ioctl.h> //ioctl
 #include <sys/xattr.h> //listxattr, getxattr
 
-#define FLAGS "AGRalo" // add any flag while realizing
+#define FLAGS "AFRldotu1" // add any flag while realizing
+
+// Флаги формата вывода
+// -A - almost all - выдавать все файлы, включая скрытые, кроме `.' и `..'
+// -l - long output
+// -o - long output без группы, отменяет -l
+// -R - рекурсивный вывод всего содержимого
+// -F - добавлять к каждому имени файла символ, показывающий его тип
+// -1 - вывод в одноколоночном формате
+// -d - отменяет открытие каталогов, каталог показывается как файл
+// -u - использовать время последнего доступа к файлу
+//      вместо времени последней модификации файла.
+
+// Флаги сортировки
+// -t — сортировать по показываемому временному штампу.
 
 //------macros pack for definition of type------
 #define MX_ISBLK(m)      (((m) & S_IFMT) == S_IFBLK)  /* 'b'lock special */
@@ -75,7 +89,7 @@ int mx_get_winsize(void);
 char *mx_namejoin(char *name1, char *name2);
 
 //------Filling any information about file/link/dir pack------
-t_lstat *mx_lstat_fill(struct stat buf, char *argv);
+t_lstat *mx_lstat_fill(struct stat buf, char *argv, int *flags);
 char *mx_get_owner(uid_t st_uid);
 char *mx_get_group(gid_t st_gid);
 char *mx_get_name(char *argv);
