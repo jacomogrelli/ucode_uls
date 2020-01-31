@@ -71,10 +71,10 @@ typedef struct s_lstat {
 } t_lstat;
 
 typedef struct s_uls_out {
-    t_list *errors; //массив ошибок
-    t_lstat *files; //массив файлов
-    t_list *folders; //массив папок
-    t_lstat *dirlist;
+    t_list *E; //массив ошибок
+    t_lstat *F; //массив файлов
+    t_list *D; //массив папок
+    t_lstat *Dlist;
 } t_uls_out;
 
 // void mx_basic(int argc, char **argv, int flag_count);
@@ -105,8 +105,11 @@ void mx_get_dirlist(t_uls_out *all, int *flags);
 void mx_output_error(t_list *err);
 // void mx_output_files(t_list *files, int *flags);
 void mx_output_files(t_lstat *out, int *flags);
+// void mx_output_files(t_lstat *out, int *flags, t_list *D);
 void mx_push_stat(t_lstat **list, void *data);
+void mx_output_folders(t_list *out, int *flags);
 
-void mx_output_folders(t_uls_out *out, int *flags);
+// utils
+void mx_default_l(t_lstat *o);
 
 #endif

@@ -6,9 +6,10 @@
  * необходимости.
  */
 
-t_lstat *mx_lstat_fill(struct stat buf, char *argv) {
+t_lstat *mx_lstat_fill(struct stat buf, char *argv, int *flags) {
     t_lstat *res = malloc(sizeof(t_lstat));
-
+    if (!flags) // delete or change in future!
+        exit(1);
     res->path = mx_strdup(argv);
     res->name = mx_get_name(argv);
     res->mode = mx_get_permission(buf.st_mode, res->path);
