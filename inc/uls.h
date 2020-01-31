@@ -63,7 +63,7 @@ typedef struct s_lstat {
     char *size_b;   // off_t st_size, общий размер в байтах
     // blksize_t st_blksize;   //размер блока ввода-вывода, в файловой системе
     // blkcnt_t st_blocks;     //количество выделенных блоков
-    // time_t        st_atime;    /* время последнего доступа */
+    // char *atime;    /* время последнего доступа */
     char *mtime;            //time_t st_mtime, время последней модификации
     // time_t        st_ctime;    /* время последнего изменения */
     // struct s_lstat *next;
@@ -93,7 +93,7 @@ t_lstat *mx_lstat_fill(struct stat buf, char *argv, int *flags);
 char *mx_get_owner(uid_t st_uid);
 char *mx_get_group(gid_t st_gid);
 char *mx_get_name(char *argv);
-char *mx_get_mtime(struct timespec stmtime);
+char *mx_get_mtime(struct stat buf, int *flags);
 char *mx_get_permission(mode_t st_mode, char *path);
 char mx_get_perm_type(mode_t st_mode);
 char *mx_get_plink(char *argv, off_t st_size, char p);

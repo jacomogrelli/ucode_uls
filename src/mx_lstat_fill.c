@@ -6,7 +6,7 @@
  * необходимости.
  */
 
-t_lstat *mx_lstat_fill(struct stat buf, char *argv) {
+t_lstat *mx_lstat_fill(struct stat buf, char *argv, int *flags) {
     t_lstat *res = malloc(sizeof(t_lstat));
 
     res->path = mx_strdup(argv);
@@ -17,7 +17,7 @@ t_lstat *mx_lstat_fill(struct stat buf, char *argv) {
     res->plink = mx_get_plink(argv, buf.st_size, res->mode[0]);
     res->own_name = mx_get_owner(buf.st_uid);
     res->group = mx_get_group(buf.st_gid);
-    res->mtime = mx_get_mtime(buf.st_mtimespec);
+    res->mtime = mx_get_mtime(buf, flags);
     // res->dirlist = NULL;
     res->next = NULL;
     // mx_printstr(res->mode);

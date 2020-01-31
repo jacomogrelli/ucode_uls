@@ -12,17 +12,24 @@
 static char *uls_date_more6(char *buf);
 static char *uls_date_less6(char *buf);
 
-char *mx_get_mtime(struct timespec stmtime) {
-    char *buf = mx_strdup(ctime(&stmtime.tv_sec));
+char *mx_get_mtime(struct stat buf, int *flags) {
+    time_t f_time;
+    char *buf1 = NULL;
     char *res = NULL;
     time_t cur = time(NULL);
     time_t six_mon = 15778368; //к-во секунд в 6 месяцах
 
-    if ((cur - six_mon) > stmtime.tv_sec || (cur + six_mon) < stmtime.tv_sec)
-        res = uls_date_more6(buf);
+    if (flags[mx_get_char_index(FLAGS, 'u')])
+        f_time = buf.st_atimespec.tv_sec;
     else
-        res = uls_date_less6(buf);
-    mx_strdel(&buf);
+        f_time = buf.st_mtimespec.tv_sec;
+    buf1 = mx_strdup(ctime(&f_time));
+
+    if ((cur - six_mon) > f_time || (cur + six_mon) < f_time)
+        res = uls_date_more6(buf1);
+    else
+        res = uls_date_less6(buf1);
+    mx_strdel(&buf1);
     return res;
 }
 
