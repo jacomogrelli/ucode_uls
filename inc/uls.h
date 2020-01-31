@@ -62,7 +62,7 @@ typedef struct s_lstat {
     // dev_t st_rdev;          //тип устройства, (если это устройство)
     char *size_b;   // off_t st_size, общий размер в байтах
     // blksize_t st_blksize;   //размер блока ввода-вывода, в файловой системе
-    // blkcnt_t st_blocks;     //количество выделенных блоков
+    int total;     //количество выделенных блоков
     // char *atime;    /* время последнего доступа */
     char *mtime;            //time_t st_mtime, время последней модификации
     // time_t        st_ctime;    /* время последнего изменения */
@@ -100,6 +100,7 @@ char *mx_get_plink(char *argv, off_t st_size, char p);
 char *mx_get_size(struct stat buf);
 char mx_get_perm_10(char *path);
 void mx_get_dirlist(t_uls_out *all, int *flags);
+int mx_get_total(struct stat buf);
 
 //------Output pack------
 void mx_output_error(t_list *err);

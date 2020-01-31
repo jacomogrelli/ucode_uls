@@ -18,6 +18,7 @@ t_lstat *mx_lstat_fill(struct stat buf, char *argv, int *flags) {
     res->own_name = mx_get_owner(buf.st_uid);
     res->group = mx_get_group(buf.st_gid);
     res->mtime = mx_get_mtime(buf, flags);
+    res->total = mx_get_total(buf);
     // res->dirlist = NULL;
     res->next = NULL;
     // mx_printstr(res->mode);

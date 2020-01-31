@@ -37,6 +37,7 @@ SRC		=	mx_main.c \
 			mx_output_folders.c \
 			mx_get_dirlist.c \
 			mx_namejoin.c \
+			mx_get_total.c \
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
 OBJS	=	$(addprefix $(OBJD)/, $(SRC:%.c=%.o))
