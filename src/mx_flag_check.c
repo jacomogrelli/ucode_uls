@@ -11,7 +11,7 @@
  * если указанный флаг имеется в макросе FLAGS в соответсвующем елементе масс
  * ива *int
  */
-
+// доделать ошибку "- no such file or directory"
 static void uls_err_illegal_option(char c);
 static void uls_flags_arr_init(int **flags);
 
@@ -50,3 +50,13 @@ static void uls_flags_arr_init(int **flags) {
         (*flags)[i] = 0;
     }
 }
+
+// static void no_flags(char **av, int res) {
+//     if (mx_strcmp(av[1], "--") == 0) {
+//         res = 0;
+//         return res;
+//     }
+//     if (av[1] == '-') {
+
+//     }
+// }
