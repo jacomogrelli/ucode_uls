@@ -8,6 +8,7 @@
 
 t_lstat *mx_lstat_fill(struct stat buf, char *argv, int *flags) {
     t_lstat *res = malloc(sizeof(t_lstat));
+
     if (!flags) // delete or change in future!
         exit(1);
     res->path = mx_strdup(argv);
@@ -23,6 +24,5 @@ t_lstat *mx_lstat_fill(struct stat buf, char *argv, int *flags) {
     // res->dirlist = NULL;
     res->next = NULL;
     // mx_printstr(res->mode);
-    // system("leaks -q uls");
     return res;
 }

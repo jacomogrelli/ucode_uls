@@ -77,9 +77,7 @@ typedef struct s_uls_out {
     t_lstat *Dlist;
 } t_uls_out;
 
-// void mx_basic(int argc, char **argv, int flag_count);
 int mx_flag_check(int argc, char **argv, int **flags);
-// t_list *mx_empty_flag(int *flags);
 t_list *mx_empty_flag(int *flags, char *dir);
 void mx_error_no_such(char *argv);
 t_list *mx_ascii_sort_list(t_list *lst);
@@ -104,14 +102,12 @@ int mx_get_total(struct stat buf);
 
 //------Output pack------
 void mx_output_error(t_list *err);
-// void mx_output_files(t_list *files, int *flags);
 void mx_output_files(t_lstat *out, int *flags);
-// void mx_output_files(t_lstat *out, int *flags, t_list *D);
 void mx_push_stat(t_lstat **list, void *data);
 void mx_output_folders(t_list *out, int *flags);
 
 // utils
 void mx_default_l(t_lstat *o);
-t_lstat *mx_asort_lstat(t_lstat *lst);
+t_lstat *mx_asort_lstat(t_lstat *lst); // сортирует структуру лстат по имени
 
 #endif

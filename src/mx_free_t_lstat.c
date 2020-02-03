@@ -5,7 +5,9 @@
  * Функция очищает структуру.
  */
 
-void mx_free_t_lstat (t_lstat *temp) {
+void mx_free_t_lstat(t_lstat *temp) {
+    if (!temp)
+        return;
     mx_strdel(&temp->name);
     mx_strdel(&temp->path);
     mx_strdel(&temp->mode);
@@ -15,5 +17,5 @@ void mx_free_t_lstat (t_lstat *temp) {
     mx_strdel(&temp->group);
     mx_strdel(&temp->size_b);
     mx_strdel(&temp->mtime);
-    return;
+    temp = NULL;
 }

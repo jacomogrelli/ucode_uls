@@ -19,9 +19,9 @@ void mx_output_files(t_lstat *out, int *flags) {
 }
 
 void mx_default_l(t_lstat *o) {
-     for (;o; o = o->next) {
-        mx_printint(o->total);
-        mx_printstr("\n");
+     for (; o != NULL; o = o->next) {
+        // mx_printint(o->total);
+        // mx_printstr("\n");
         mx_printstr(o->mode);
         mx_printstr(" ");
         mx_printint(o->nlink);
@@ -38,6 +38,7 @@ void mx_default_l(t_lstat *o) {
         mx_printstr(" ");
         mx_printstr(o->name);
         mx_printstr("\n");
+        mx_free_t_lstat(o);
     }
 }
 

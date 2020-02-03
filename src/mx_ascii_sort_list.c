@@ -10,6 +10,7 @@ t_list *mx_ascii_sort_list(t_list *lst) {
 
 	if (!lst)
         return NULL;
+
     for (t_list *i = lst; i->next; i = i->next)
         for (t_list *j = i->next; j; j = j->next)
             if (mx_strcmp(i->data, j->data) > 0) {
