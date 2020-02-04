@@ -108,6 +108,6 @@ void mx_output_folders(t_list *out, int *flags);
 
 // utils
 void mx_default_l(t_lstat *o);
-t_lstat *mx_asort_lstat(t_lstat *lst); // сортирует структуру лстат по имени
+void mx_print_l(t_list *D, int *flags);
 
 #endif

@@ -17,9 +17,7 @@ int main (int argc, char **argv) {
     mx_output_files(all->F, flags);
     mx_get_dirlist(all, flags);
     mx_output_folders(all->D, flags); // там внутри mx_lstat_fill - > ликов много оставляет
-    free(all->D);
     free(all->F);
     free(all->E);
     // system("leaks -q uls");
-    //  нужно исправить вывод прав при флаге -l -lA оно неправильно там выводит
 }
