@@ -39,6 +39,7 @@ SRC		=	mx_main.c \
 			mx_namejoin.c \
 			mx_get_total.c \
 			mx_print_l.c \
+			mx_flag_F.c
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
 OBJS	=	$(addprefix $(OBJD)/, $(SRC:%.c=%.o))

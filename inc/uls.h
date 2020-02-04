@@ -44,7 +44,7 @@
 #define MX_ISREG(m)      (((m) & S_IFMT) == S_IFREG)  /* '-'regular file */
 #define MX_ISLNK(m)      (((m) & S_IFMT) == S_IFLNK)  /* 'l'symbolic link */
 #define MX_ISSOCK(m)     (((m) & S_IFMT) == S_IFSOCK) /* 's'socket */
-
+#define MX_ISEXEC(mode) ((mode) & S_IXUSR) // for exec files
 //------macros pack for getting major and minor------
 #define MX_GETMAJ(x)     ((int32_t)(((u_int32_t)(x) >> 24) & 0xff))
 #define MX_GETMIN(x)     ((int32_t)((x) & 0xffffff))
@@ -109,5 +109,6 @@ void mx_output_folders(t_list *out, int *flags);
 // utils
 void mx_default_l(t_lstat *o);
 void mx_print_l(t_list *D, int *flags);
+void mx_flag_F(t_list *out);
 
 #endif
