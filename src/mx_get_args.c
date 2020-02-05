@@ -14,7 +14,7 @@ if (flags != NULL) // delete
         if (lstat(argv[flag], &buf) < 0)
            mx_push_back(&res->E, argv[flag]);
         else {
-            if (MX_ISDIR(buf.st_mode))
+            if (MX_ISDIR(buf.st_mode) && !MX_ISLNK(buf.st_mode))
                 mx_push_back(&res->D, argv[flag]);
             else
                 mx_push_stat(&res->F, mx_lstat_fill(buf, argv[flag], flags));

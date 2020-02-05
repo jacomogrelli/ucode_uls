@@ -15,7 +15,6 @@ int main (int argc, char **argv) {
     all = mx_get_args(argc, flag_count, argv, flags);
     mx_output_error(all->E);
     mx_output_files(all->F, flags);
-    mx_get_dirlist(all, flags);
     mx_output_folders(all->D, flags); // там внутри mx_lstat_fill - > ликов много оставляет
     free(all->F);
     free(all->E);

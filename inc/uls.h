@@ -97,7 +97,6 @@ char mx_get_perm_type(mode_t st_mode);
 char *mx_get_plink(char *argv, off_t st_size, char p);
 char *mx_get_size(struct stat buf);
 char mx_get_perm_10(char *path);
-void mx_get_dirlist(t_uls_out *all, int *flags);
 int mx_get_total(struct stat buf);
 
 //------Output pack------
@@ -110,5 +109,6 @@ void mx_output_folders(t_list *out, int *flags);
 void mx_default_l(t_lstat *o);
 void mx_print_l(t_list *D, int *flags);
 void mx_flag_F(t_list *out);
+void mx_R(t_list *D, int *flags);
 
 #endif

@@ -23,6 +23,5 @@ t_lstat *mx_lstat_fill(struct stat buf, char *argv, int *flags) {
     res->total = mx_get_total(buf);
     // res->dirlist = NULL;
     res->next = NULL;
-    // mx_printstr(res->mode);
     return res;
 }

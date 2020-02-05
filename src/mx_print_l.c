@@ -1,4 +1,5 @@
 #include "uls.h"
+
 t_list *getfromdir(t_list *D) {
     DIR *dirp;
     struct dirent *dbuf;
@@ -6,9 +7,8 @@ t_list *getfromdir(t_list *D) {
 
     if (!(dirp = opendir(D->data)))
         exit(1);
-    for (; (dbuf = readdir(dirp));) {
+    for (; (dbuf = readdir(dirp));)
         mx_push_back(&lst, dbuf->d_name);
-    }
     mx_ascii_sort_list(lst);
     return lst;
 }
@@ -24,8 +24,8 @@ t_lstat *odir(t_list *D, int *flags) {
         if (mx_strncmp(D->data, ".", 1) != 0 &&
             !flags[mx_get_char_index(FLAGS, 'A')])
             mx_push_stat(&p, mx_lstat_fill(buf, D->data, flags));
-        if (mx_strcmp(D->data, ".") != 0 && mx_strcmp(D->data, "..") != 0 &&
-            flags[mx_get_char_index(FLAGS, 'A')])
+        if (mx_strcmp(D->data, ".") != 0 && mx_strcmp(D->data, "..") != 0
+            && flags[mx_get_char_index(FLAGS, 'A')])
             mx_push_stat(&p, mx_lstat_fill(buf, D->data, flags)); //  mx_lstat_fill - > ликов много оставляет
     }
     return p;
@@ -34,6 +34,8 @@ t_lstat *odir(t_list *D, int *flags) {
 void mx_print_l(t_list *D, int *flags) {
     t_lstat *res = NULL;
 
+    if (!D)
+        exit(1);
     res = odir(getfromdir(D), flags);
     mx_default_l(res);
     mx_free_t_lstat(res);
