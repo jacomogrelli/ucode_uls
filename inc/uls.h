@@ -87,10 +87,10 @@ int mx_get_winsize(void);
 char *mx_namejoin(char *name1, char *name2);
 
 //------Filling any information about file/link/dir pack------
-t_lstat *mx_lstat_fill(struct stat buf, char *argv, int *flags);
+t_lstat *mx_lstat_fill(struct stat buf, char *argv, int *flags, bool r);
 char *mx_get_owner(uid_t st_uid);
 char *mx_get_group(gid_t st_gid);
-char *mx_get_name(char *argv);
+char *mx_get_name(char *argv, int *flags, struct stat buf, bool r);
 char *mx_get_mtime(struct stat buf, int *flags);
 char *mx_get_permission(mode_t st_mode, char *path);
 char mx_get_perm_type(mode_t st_mode);
@@ -108,7 +108,7 @@ void mx_output_folders(t_list *out, int *flags);
 // utils
 void mx_default_l(t_lstat *o);
 void mx_print_l(t_list *D, int *flags);
-void mx_flag_F(t_list *out);
+char *mx_flag_F(char *name, struct stat buf);
 void mx_R(t_list *D, int *flags);
 
 #endif

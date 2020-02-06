@@ -3,8 +3,8 @@
 void mx_output_folders(t_list *out, int *flags) {
     if (flags[mx_get_char_index(FLAGS, 'l')])
         mx_print_l(out, flags);
-    if (flags[mx_get_char_index(FLAGS, 'F')])
-        mx_flag_F(out);
+    // if (flags[mx_get_char_index(FLAGS, 'F')])
+    //     mx_flag_F(out);
     if (flags[mx_get_char_index(FLAGS, 'R')] &&
         !flags[mx_get_char_index(FLAGS, 'd')])
             mx_R(out, flags);

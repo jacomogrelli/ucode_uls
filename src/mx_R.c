@@ -1,6 +1,6 @@
 #include "uls.h"
 
-static t_list *get_A(t_list *D) {
+static t_list *get_a(t_list *D) {
     DIR *dirp;
     struct dirent *buf;
     struct stat buf2;
@@ -40,10 +40,12 @@ static t_list *get_default(t_list *D) {
 }
 
 void mx_R(t_list *D, int *flags) {
+    if (!D)
+        return;
     if (flags[mx_get_char_index(FLAGS, 'A')])
-        D = get_A(D);
+        D = get_a(D);
     else
         D = get_default(D);
-    mx_ascii_sort_list(D);
-    mx_printlist(D);
+    // mx_ascii_sort_list(D);
+    // mx_printlist(D);
 }

@@ -6,13 +6,11 @@
  * необходимости.
  */
 
-t_lstat *mx_lstat_fill(struct stat buf, char *argv, int *flags) {
+t_lstat *mx_lstat_fill(struct stat buf, char *argv, int *flags, bool r) {
     t_lstat *res = malloc(sizeof(t_lstat));
 
-    if (!flags) // delete or change in future!
-        exit(1);
     res->path = mx_strdup(argv);
-    res->name = mx_get_name(argv);
+    res->name = mx_get_name(argv, flags, buf, r);
     res->mode = mx_get_permission(buf.st_mode, res->path);
     res->nlink = buf.st_nlink;
     res->size_b = mx_get_size(buf);

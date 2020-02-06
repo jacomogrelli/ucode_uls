@@ -20,6 +20,6 @@ void mx_default_l(t_lstat *o) {
         mx_printstr(" ");
         mx_printstr(o->name);
         mx_printstr("\n");
-        mx_free_t_lstat(o);
+        // mx_free_t_lstat(o);
     }
 }
