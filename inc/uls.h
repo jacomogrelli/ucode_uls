@@ -20,7 +20,7 @@
 #include <sys/ioctl.h> //ioctl
 #include <sys/xattr.h> //listxattr, getxattr
 
-#define FLAGS "AFRldotu1" // add any flag while realizing
+#define FLAGS "AFRldou1" // add any flag while realizing
 
 // Флаги формата вывода
 // -A - almost all - выдавать все файлы, включая скрытые, кроме `.' и `..'
@@ -98,6 +98,8 @@ char *mx_get_plink(char *argv, off_t st_size, char p);
 char *mx_get_size(struct stat buf);
 char mx_get_perm_10(char *path);
 int mx_get_total(struct stat buf);
+t_uls_out *mx_get_dirlist(t_uls_out *all, int *flags);
+
 
 //------Output pack------
 void mx_output_error(t_list *err);

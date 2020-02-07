@@ -13,8 +13,12 @@ int main (int argc, char **argv) {
     t_uls_out *all = NULL;
 
     all = mx_get_args(argc, flag_count, argv, flags);
-    mx_printlist(all->D);
-    // mx_default_l(all->F);
+    all = mx_get_dirlist(all, flags);
+    // while (all->Dlist) {
+    //     printf("path %s\n", all->Dlist->path);
+    //     all->Dlist = all->Dlist->next;
+    // }
+    mx_default_l(all->Dlist);
     return 0;
     mx_output_error(all->E);
     mx_output_files(all->F, flags);
