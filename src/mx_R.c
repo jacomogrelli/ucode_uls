@@ -4,19 +4,22 @@ static t_list *get_a(t_list *D) {
     DIR *dirp;
     struct dirent *buf;
     struct stat buf2;
+    t_list *head = D;
 
-    for (t_list *p = D; p; p = p->next) {
-        if (!(dirp = opendir(p->data)))
-            exit(1);
-        while ((buf = readdir(dirp)) != NULL)
-            if (mx_strcmp(buf->d_name, ".") != 0
-                && mx_strcmp(buf->d_name, "..") != 0)
-                if (lstat(mx_namejoin(p->data, buf->d_name), &buf2) >= 0)
-                    if (MX_ISDIR(buf2.st_mode))
-                        mx_push_back(&p, mx_namejoin(p->data, buf->d_name));
-        if (closedir(dirp) < 0)
-            exit(1);
+    for (; D; D = D->next) {
+        if ((dirp = opendir(D->data))) {
+            while ((buf = readdir(dirp)) != NULL) {
+                if (mx_strcmp(buf->d_name, ".") != 0 &&
+                    mx_strncmp(buf->d_name, "..", 2) != 0)
+                    if (lstat(mx_namejoin(D->data, buf->d_name), &buf2) >= 0)
+                        if (MX_ISDIR(buf2.st_mode))
+                            mx_push_back(&D, mx_namejoin(D->data, buf->d_name));
+            }
+            if (closedir(dirp) < 0)
+                exit(1);
+        }
     }
+    D = head;
     return D;
 }
 
@@ -24,28 +27,30 @@ static t_list *get_default(t_list *D) {
     DIR *dirp;
     struct dirent *buf;
     struct stat buf2;
+    t_list *head = D;
 
-    for (t_list *p = D; p != NULL; p = p->next) {
-        if (!(dirp = opendir(p->data)))
-            exit(1);
-        while ((buf = readdir(dirp)) != NULL)
-            if (buf->d_name[0] != '.')
-                if (lstat(mx_namejoin(p->data, buf->d_name), &buf2) >= 0)
-                    if (MX_ISDIR(buf2.st_mode))
-                        mx_push_back(&p, mx_namejoin(p->data, buf->d_name));
-        if (closedir(dirp) < 0)
-            exit(1);
+    for (; D != NULL; D = D->next) {
+        if ((dirp = opendir(D->data))) {
+            while ((buf = readdir(dirp)) != NULL) {
+                if (buf->d_name[0] != '.')
+                    if (lstat(mx_namejoin(D->data, buf->d_name), &buf2) >= 0)
+                        if (MX_ISDIR(buf2.st_mode))
+                            mx_push_back(&D, mx_namejoin(D->data, buf->d_name));
+            }
+            if (closedir(dirp) < 0)
+                exit(1);
+        }
     }
+    D = head;
     return D;
 }
 
-void mx_R(t_list *D, int *flags) {
+t_list *mx_R(t_list *D, int *flags) {
     if (!D)
-        return;
+        return D;
     if (flags[mx_get_char_index(FLAGS, 'A')])
         D = get_a(D);
     else
         D = get_default(D);
-    // mx_ascii_sort_list(D);
-    // mx_printlist(D);
+    return D;
 }

@@ -14,7 +14,7 @@ int main (int argc, char **argv) {
 
     all = mx_get_args(argc, flag_count, argv, flags);
     mx_printlist(all->D);
-    mx_default_l(all->F);
+    // mx_default_l(all->F);
     return 0;
     mx_output_error(all->E);
     mx_output_files(all->F, flags);

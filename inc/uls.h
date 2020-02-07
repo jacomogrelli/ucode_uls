@@ -109,6 +109,6 @@ void mx_output_folders(t_list *out, int *flags);
 void mx_default_l(t_lstat *o);
 void mx_print_l(t_list *D, int *flags);
 char *mx_flag_F(char *name, struct stat buf);
-void mx_R(t_list *D, int *flags);
+t_list *mx_R(t_list *D, int *flags);
 
 #endif

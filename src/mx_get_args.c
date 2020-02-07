@@ -28,7 +28,7 @@ t_uls_out *mx_get_args(int argc, int flag, char **argv, int *flags) {
 
     if (argc == flag) {
         if (lstat(".", &buf) >= 0)
-            return uls_flag_D(buf, flags, res, ".");
+            res = uls_flag_D(buf, flags, res, ".");
     }
     for (;flag < argc; flag++) {
         if (lstat(argv[flag], &buf) < 0)
@@ -41,6 +41,7 @@ t_uls_out *mx_get_args(int argc, int flag, char **argv, int *flags) {
         }
     }
     if (flags[mx_get_char_index(FLAGS, 'R')])
-        mx_R(res->D, flags);
+        res->D = mx_R(res->D, flags);
+    mx_ascii_sort_list(res->D);
     return res;
 }
