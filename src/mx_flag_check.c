@@ -20,6 +20,8 @@ int mx_flag_check(int argc, char **argv, int **flags) {
 
     uls_flags_arr_init(flags);
     for (int i = 1; i < argc && argv[i][0] == '-'; i++) {
+        if (argv[i][0] == '-' && !argv[i][1])
+            return res;
         if (mx_strcmp(argv[i], "--") == 0)
             return res + 1;
         if (argv[i][0] == '-') {

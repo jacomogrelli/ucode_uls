@@ -48,6 +48,7 @@ t_uls_out *mx_sorty(t_uls_out *all, int *flags) {
         head = head->next;
     }
     head = all;
-    sort_list(head->F);
+    if (head->F)
+        sort_list(head->F);
     return all;
 }
