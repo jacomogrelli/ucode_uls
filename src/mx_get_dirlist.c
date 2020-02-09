@@ -4,22 +4,27 @@ static t_uls_out *get_a(t_uls_out *all, int *flags) {
     DIR *dirp;
     struct dirent *buf;
     struct stat buf2;
+    t_uls_out *ptr = all;
+    t_list *head = all->D;
 
-    for (;all->D; all->D = all->D->next) {
-        if ((dirp = opendir(all->D->data))) {
+    for (;ptr->D; ptr->D = ptr->D->next) {
+        if ((dirp = opendir(ptr->D->data))) {
             while ((buf = readdir(dirp)) != NULL) {
                 if (mx_strcmp(buf->d_name, ".") != 0 &&
                     mx_strncmp(buf->d_name, "..", 2) != 0)
-                        if (lstat(mx_namejoin(all->D->data, buf->d_name),
+                        if (lstat(mx_namejoin(ptr->D->data, buf->d_name),
                             &buf2) >= 0)
                             mx_push_stat(&all->Dlist, mx_lstat_fill(buf2,
-                            mx_namejoin(all->D->data, buf->d_name),
+                            mx_namejoin(ptr->D->data, buf->d_name),
                             flags, true));
             }
             if (closedir(dirp) < 0)
                 exit(1);
+            all = mx_t_uls_out_init(all);
         }
     }
+    all = ptr;
+    all->D = head;
     return all;
 }
 
@@ -27,20 +32,25 @@ static t_uls_out *get_default(t_uls_out *all, int *flags) {
     DIR *dirp;
     struct dirent *buf;
     struct stat buf2;
+    t_uls_out *ptr = all;
+    t_list *head = all->D;
 
-    for (;all->D; all->D = all->D->next) {
-        if ((dirp = opendir(all->D->data))) {
+    for (;ptr->D; ptr->D = ptr->D->next) {
+        if ((dirp = opendir(ptr->D->data))) {
             while ((buf = readdir(dirp)) != NULL) {
-                if (buf->d_name[0] != '.')
-                    if (lstat(mx_namejoin(all->D->data, buf->d_name),
+                if(buf->d_name[0] != '.')
+                    if (lstat(mx_namejoin(ptr->D->data, buf->d_name),
                         &buf2) >= 0)
                         mx_push_stat(&all->Dlist, mx_lstat_fill(buf2,
-                        mx_namejoin(all->D->data, buf->d_name), flags, true));
+                        mx_namejoin(ptr->D->data, buf->d_name), flags, true));
             }
             if (closedir(dirp) < 0)
                 exit(1);
+            all = mx_t_uls_out_init(all);
         }
     }
+    all = ptr;
+    all->D = head;
     return all;
 }
 

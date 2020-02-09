@@ -7,6 +7,7 @@ static t_uls_out *uls_res_init(void) {
     res->F = NULL;
     res->D = NULL;
     res->Dlist = NULL;
+    res->next = NULL;
     return res;
 }
 

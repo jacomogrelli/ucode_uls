@@ -75,6 +75,7 @@ typedef struct s_uls_out {
     t_lstat *F; //массив файлов
     t_list *D; //массив папок
     t_lstat *Dlist;
+    struct s_uls_out *next;
 } t_uls_out;
 
 int mx_flag_check(int argc, char **argv, int **flags);
@@ -85,6 +86,7 @@ t_uls_out *mx_get_args(int argc, int flag, char **argv, int *flags);
 void mx_free_t_lstat (t_lstat *temp);
 int mx_get_winsize(void);
 char *mx_namejoin(char *name1, char *name2);
+t_uls_out *mx_t_uls_out_init(t_uls_out *all);
 
 //------Filling any information about file/link/dir pack------
 t_lstat *mx_lstat_fill(struct stat buf, char *argv, int *flags, bool r);
@@ -112,5 +114,6 @@ void mx_default_l(t_lstat *o);
 void mx_print_l(t_list *D, int *flags);
 char *mx_flag_F(char *name, struct stat buf);
 t_list *mx_R(t_list *D, int *flags);
+t_uls_out *mx_sorty(t_uls_out *all, int *flags);
 
 #endif

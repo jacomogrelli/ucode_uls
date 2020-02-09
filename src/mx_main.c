@@ -14,11 +14,17 @@ int main (int argc, char **argv) {
 
     all = mx_get_args(argc, flag_count, argv, flags);
     all = mx_get_dirlist(all, flags);
-    // while (all->Dlist) {
-    //     printf("path %s\n", all->Dlist->path);
-    //     all->Dlist = all->Dlist->next;
-    // }
-    mx_default_l(all->Dlist);
+    all = mx_sorty(all, flags);
+    // mx_printlist(all->D);
+    while (all) {
+        if (all->Dlist) {
+        mx_printstr(all->Dlist->path);
+        mx_printstr("\n");
+        mx_default_l(all->Dlist);
+        mx_printstr("\n\n\n");
+        }
+        all = all->next;
+    }
     return 0;
     mx_output_error(all->E);
     mx_output_files(all->F, flags);

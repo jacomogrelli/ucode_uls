@@ -42,6 +42,8 @@ SRC		=	mx_main.c \
 			mx_flag_F.c \
 			mx_default_l.c \
 			mx_R.c \
+			mx_t_uls_out_init.c \
+			mx_sorty.c \
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
 OBJS	=	$(addprefix $(OBJD)/, $(SRC:%.c=%.o))
