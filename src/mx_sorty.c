@@ -28,21 +28,26 @@ static void data_swap(t_lstat *s1, t_lstat *s2) {
     char_swap(&s1->mtime, &s2->mtime);
 }
 
+static void sort_list(t_lstat *head) {
+    for (t_lstat *i = head; i->next; i = i->next) {
+        for (t_lstat *j = i->next; j; j = j->next) {
+            if (mx_strcmp(i->name, j->name) > 0)
+                data_swap(i, j);
+        }
+    }
+}
+
 t_uls_out *mx_sorty(t_uls_out *all, int *flags) {
     t_uls_out *head = all;
 
     if (flags)
     while (head) {
         if (head->Dlist) {
-            for (t_lstat *i = head->Dlist; i->next; i = i->next) {
-                for (t_lstat *j = i->next; j; j = j->next) {
-                    if (mx_strcmp(i->name, j->name) > 0) {
-                        data_swap(i, j);
-                    }
-                }
-            }
+            sort_list(head->Dlist);
         }
         head = head->next;
     }
+    head = all;
+    sort_list(head->F);
     return all;
 }

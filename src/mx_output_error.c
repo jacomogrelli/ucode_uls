@@ -16,6 +16,4 @@ void mx_output_error(t_list *err) {
             mx_error_no_such(err->data);
         err = err->next;
     }
-    // return;
-    exit(1);
 }
