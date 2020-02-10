@@ -107,7 +107,8 @@ t_uls_out *mx_get_dirlist(t_uls_out *all, int *flags);
 void mx_output_error(t_list *err);
 void mx_output_files(t_lstat *out, int *flags);
 void mx_push_stat(t_lstat **list, void *data);
-void mx_output_folders(t_list *out, int *flags);
+// void mx_output_folders(t_list *out, int *flags);
+void mx_output_folders(t_uls_out *all, int *flags, int ac, int flag);
 void mx_output_total(t_lstat *Dlist);
 
 // utils
@@ -131,6 +132,8 @@ void mx_space(int count); // util for slong_out
 int mx_get_max_group(t_lstat *F); // util for slong_out
 void mx_flong_out(t_lstat *F); //  for mx_long out
 int mx_get_max_size(t_lstat *N); // for mx_long_out
-
+void mx_print_nonprint_str(const char *s);
+// --------------- output dirs
+void mx_print_dname(char *dname);
 
 #endif
