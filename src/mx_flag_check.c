@@ -39,7 +39,7 @@ int mx_flag_check(int argc, char **argv, int **flags) {
 static void uls_err_illegal_option(char c) {
     mx_printerr("uls: illegal option -- ");
     write(2, &c, 1);
-    mx_printerr("\nusage: ls [-");
+    mx_printerr("\nusage: uls [-");
     mx_printerr(FLAGS);
     mx_printerr("] [file ...]\n");
     exit (1);
