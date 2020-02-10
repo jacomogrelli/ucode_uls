@@ -45,6 +45,18 @@ SRC		=	mx_main.c \
 			mx_t_uls_out_init.c \
 			mx_sorty.c \
 			mx_uls_cleaner.c \
+			mx_cat_out.c \
+			mx_1_out.c \
+			mx_multicol_out.c \
+			mx_def_space.c \
+			mx_get_num_files.c \
+			mx_struct_index.c \
+			mx_long_out.c \
+			mx_slong_out.c \
+			mx_space.c \
+			mx_flong_out.c \
+			mx_get_max_group.c \
+			mx_get_max_size.c \
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
 OBJS	=	$(addprefix $(OBJD)/, $(SRC:%.c=%.o))
