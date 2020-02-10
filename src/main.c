@@ -19,6 +19,7 @@ int main (int argc, char **argv) {
     // mx_default_l(all->Dlist);
     // return 0;
     mx_output_files(all->F, flags);
+    mx_output_folders(all, flags, argc, flag_count);
     // mx_output_folders(all->D, flags); // там внутри mx_lstat_fill - > ликов много оставляет
     mx_uls_cleaner(all);
     // system("leaks -q uls");

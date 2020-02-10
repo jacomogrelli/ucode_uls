@@ -1,10 +1,10 @@
 #include "uls.h"
 
-static void int_swap(int i1, int i2) {
-    int buf = i1;
+static void int_swap(int *i1, int *i2) {
+    int buf = *i1;
 
-    i1 = i2;
-    i2 = buf;
+    *i1 = *i2;
+    *i2 = buf;
 }
 
 static void char_swap(char **s1, char **s2) {
@@ -22,11 +22,11 @@ static void data_swap(t_lstat *s1, t_lstat *s2) {
     char_swap(&s1->name, &s2->name);
     char_swap(&s1->path, &s2->path);
     char_swap(&s1->mode, &s2->mode);
-    int_swap(s1->nlink, s2->nlink);
+    int_swap(&s1->nlink, &s2->nlink);
     char_swap(&s1->own_name, &s2->own_name);
     char_swap(&s1->group, &s2->group);
     char_swap(&s1->size_b, &s2->size_b);
-    int_swap(s1->total, s2->total);
+    int_swap(&s1->total, &s2->total);
     char_swap(&s1->mtime, &s2->mtime);
 }
 
