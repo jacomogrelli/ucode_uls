@@ -5,15 +5,22 @@ static t_list *get_a(t_list *D) {
     struct dirent *buf;
     struct stat buf2;
     t_list *head = D;
+    char *name = NULL;
 
     for (; D; D = D->next) {
         if ((dirp = opendir(D->data))) {
             while ((buf = readdir(dirp)) != NULL) {
                 if (mx_strcmp(buf->d_name, ".") != 0 &&
                     mx_strncmp(buf->d_name, "..", 2) != 0)
-                    if (lstat(mx_namejoin(D->data, buf->d_name), &buf2) >= 0)
-                        if (MX_ISDIR(buf2.st_mode))
-                            mx_push_back(&D, mx_namejoin(D->data, buf->d_name));
+                    if (lstat(name = mx_namejoin(D->data, buf->d_name),
+                        &buf2) >= 0) {
+                        mx_strdel(&name);
+                        if (MX_ISDIR(buf2.st_mode)) {
+                            mx_push_back(&D, name = mx_namejoin(D->data,
+                                         buf->d_name));
+                            mx_strdel(&name);
+                        }
+                    }
             }
             if (closedir(dirp) < 0)
                 exit(1);
@@ -28,14 +35,21 @@ static t_list *get_default(t_list *D) {
     struct dirent *buf;
     struct stat buf2;
     t_list *head = D;
+    char *name = NULL;
 
     for (; D != NULL; D = D->next) {
         if ((dirp = opendir(D->data))) {
             while ((buf = readdir(dirp)) != NULL) {
                 if (buf->d_name[0] != '.')
-                    if (lstat(mx_namejoin(D->data, buf->d_name), &buf2) >= 0)
-                        if (MX_ISDIR(buf2.st_mode))
-                            mx_push_back(&D, mx_namejoin(D->data, buf->d_name));
+                    if (lstat(name = mx_namejoin(D->data, buf->d_name),
+                        &buf2) >= 0) {
+                        mx_strdel(&name);
+                        if (MX_ISDIR(buf2.st_mode)) {
+                            mx_push_back(&D, name = mx_namejoin(D->data,
+                                         buf->d_name));
+                            mx_strdel(&name);
+                        }
+                    }
             }
             if (closedir(dirp) < 0)
                 exit(1);
