@@ -108,7 +108,6 @@ void mx_output_error(t_list *err);
 void mx_output_files(t_lstat *out, int *flags);
 void mx_push_stat(t_lstat **list, void *data);
 void mx_output_folders(t_list *out, int *flags);
-void mx_output_total(t_lstat *Dlist);
 
 // utils
 void mx_default_l(t_lstat *o);

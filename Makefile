@@ -57,7 +57,6 @@ SRC		=	mx_main.c \
 			mx_flong_out.c \
 			mx_get_max_group.c \
 			mx_get_max_size.c \
-			mx_output_total.c \
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
 OBJS	=	$(addprefix $(OBJD)/, $(SRC:%.c=%.o))
