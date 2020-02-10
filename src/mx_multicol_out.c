@@ -4,8 +4,8 @@ static int get_maxlen(t_lstat *F) {
     int max_len = 0;
 
     for (; F != NULL; F = F->next)
-        if (mx_strlen(F->path) > max_len)
-            max_len = mx_strlen(F->path);
+        if (mx_strlen(F->name) > max_len)
+            max_len = mx_strlen(F->name);
     return max_len;
 }
 static int get_max_spaces(int max) {
