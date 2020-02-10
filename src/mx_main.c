@@ -26,11 +26,12 @@ int main (int argc, char **argv) {
     //     all = all->next;
     // }
     mx_output_error(all->E);
-    mx_default_l(all->F);
-    return 0;
-    mx_output_files(all->F, flags);
+    mx_default_l(all->Dlist);
+    // return 0;
+    // mx_output_files(all->F, flags);
     mx_output_folders(all->D, flags); // там внутри mx_lstat_fill - > ликов много оставляет
-    free(all->F); //переделать free по всему листу, а не указателю отдельной функцией
-    free(all->E);
-    // system("leaks -q uls");
+    mx_uls_cleaner(all);
+    system("leaks -q uls");
+
+    return 0;
 }

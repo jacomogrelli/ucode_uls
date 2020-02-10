@@ -44,6 +44,7 @@ SRC		=	mx_main.c \
 			mx_R.c \
 			mx_t_uls_out_init.c \
 			mx_sorty.c \
+			mx_uls_cleaner.c \
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
 OBJS	=	$(addprefix $(OBJD)/, $(SRC:%.c=%.o))

@@ -115,5 +115,6 @@ void mx_print_l(t_list *D, int *flags);
 char *mx_flag_F(char *name, struct stat buf);
 t_list *mx_R(t_list *D, int *flags);
 t_uls_out *mx_sorty(t_uls_out *all, int *flags);
+void mx_uls_cleaner(t_uls_out *all);
 
 #endif
