@@ -46,7 +46,7 @@ static char *get_hex(int size, char *res) {
     hex[1] = ' ';
     for (int i = 2, j = 0; i < size; i++) {
         hex[i] = '0';
-        if (i == 1)
+        if (i == 3)
             hex[i] = 'x';
         if (i >= len) {
             hex[i] = res[j];
