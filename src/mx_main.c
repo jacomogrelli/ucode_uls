@@ -27,10 +27,10 @@ int main (int argc, char **argv) {
     // }
     mx_output_error(all->E);
     mx_default_l(all->Dlist);
+    mx_uls_cleaner(all);
     // return 0;
     // mx_output_files(all->F, flags);
-    mx_output_folders(all->D, flags); // там внутри mx_lstat_fill - > ликов много оставляет
-    mx_uls_cleaner(all);
+    // mx_output_folders(all->D, flags); // там внутри mx_lstat_fill - > ликов много оставляет
     system("leaks -q uls");
 
     return 0;
