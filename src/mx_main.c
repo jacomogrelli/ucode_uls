@@ -15,23 +15,13 @@ int main (int argc, char **argv) {
     all = mx_get_args(argc, flag_count, argv, flags);
     all = mx_get_dirlist(all, flags);
     all = mx_sorty(all, flags);
-    // mx_default_l(all->F);
-    // while (all) {
-    //     if (all->Dlist) {
-    //     mx_printstr(all->Dlist->path);
-    //     mx_printstr("\n");
-    //     mx_default_l(all->Dlist);
-    //     mx_printstr("\n\n\n");
-    //     }
-    //     all = all->next;
-    // }
     mx_output_error(all->E);
-    mx_default_l(all->Dlist);
-    mx_uls_cleaner(all);
+    // mx_default_l(all->Dlist);
     // return 0;
-    // mx_output_files(all->F, flags);
+    mx_output_files(all->F, flags);
     // mx_output_folders(all->D, flags); // там внутри mx_lstat_fill - > ликов много оставляет
-    system("leaks -q uls");
+    mx_uls_cleaner(all);
+    // system("leaks -q uls");
 
     return 0;
 }

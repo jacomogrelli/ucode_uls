@@ -117,4 +117,19 @@ t_list *mx_R(t_list *D, int *flags);
 t_uls_out *mx_sorty(t_uls_out *all, int *flags);
 void mx_uls_cleaner(t_uls_out *all);
 
+// new files from ailchuk branch
+void mx_cat_out(t_lstat *F); // Done!
+void mx_1_out(t_lstat *F); // Done!
+void mx_multicol_out(t_lstat *F); // Done!
+int mx_get_num_files(t_lstat *F); // util for mx_multicol_out
+void mx_def_space(t_lstat *F, int max, int j); // util for mx_multicol_out
+char *mx_struct_index(t_lstat *F, int i); // util for mx_multicol_out
+void mx_long_out(t_lstat *F, int *flags); // -l
+void mx_slong_out(t_lstat *F, int *flags, int max_size, int max_gr); // for mx_long out
+void mx_space(int count); // util for slong_out
+int mx_get_max_group(t_lstat *F); // util for slong_out
+void mx_flong_out(t_lstat *F); //  for mx_long out
+int mx_get_max_size(t_lstat *N); // for mx_long_out
+
+
 #endif
