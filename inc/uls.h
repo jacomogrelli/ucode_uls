@@ -133,7 +133,7 @@ void mx_long_out(t_lstat *F, int *flags); // -l
 void mx_slong_out(t_lstat *F, int *flags, int max_size, int max_gr); // for mx_long out
 void mx_space(int count); // util for slong_out
 int mx_get_max_group(t_lstat *F); // util for slong_out
-void mx_flong_out(t_lstat *F); //  for mx_long out
+void mx_flong_out(t_lstat *F, int max_links, int max_own);
 int mx_get_max_size(t_lstat *N); // for mx_long_out
 void mx_print_nonprint_str(const char *s);
 // --------------- output dirs
