@@ -90,6 +90,7 @@ void mx_free_t_lstat (t_lstat *temp);
 int mx_get_winsize(void);
 char *mx_namejoin(char *name1, char *name2);
 t_uls_out *mx_t_uls_out_init(t_uls_out *all);
+void mx_push_dir(t_list **list, void *data);
 
 //------Filling any information about file/link/dir pack------
 t_lstat *mx_lstat_fill(struct stat buf, char *argv, int *flags, bool r);

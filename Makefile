@@ -61,6 +61,7 @@ SRC		=	main.c \
 			mx_print_nonprint_str.c \
 			mx_print_dname.c \
 			mx_error_pd.c \
+			mx_push_dir.c \
 
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))

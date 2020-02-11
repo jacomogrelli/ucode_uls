@@ -20,7 +20,7 @@ int main (int argc, char **argv) {
     // mx_printlist(all->D);
     mx_output_folders(all, flags, argc, flag_count);
     mx_uls_cleaner(all);
-    // system("leaks -q uls");
+    system("leaks -q uls");
     if (all->E || all->err)
         return 1;
     return 0;

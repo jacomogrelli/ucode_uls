@@ -11,16 +11,13 @@ static t_list *get_a(t_list *D) {
         if ((dirp = opendir(D->data))) {
             while ((buf = readdir(dirp)) != NULL) {
                 if (mx_strcmp(buf->d_name, ".") != 0 &&
-                    mx_strncmp(buf->d_name, "..", 2) != 0)
-                    if (lstat(name = mx_namejoin(D->data, buf->d_name),
-                        &buf2) >= 0) {
-                        mx_strdel(&name);
-                        if (MX_ISDIR(buf2.st_mode)) {
-                            mx_push_back(&D, name = mx_namejoin(D->data,
-                                         buf->d_name));
-                            mx_strdel(&name);
-                        }
-                    }
+                    mx_strncmp(buf->d_name, "..", 2) != 0) {
+                    name = mx_namejoin(D->data, buf->d_name);
+                    if (lstat(name, &buf2) >= 0)
+                        if (MX_ISDIR(buf2.st_mode))
+                            mx_push_dir(&D, name);
+                    free(name);
+                }
             }
             if (closedir(dirp) < 0)
                 exit(1);
@@ -40,14 +37,13 @@ static t_list *get_default(t_list *D) {
     for (; D != NULL; D = D->next) {
         if ((dirp = opendir(D->data))) {
             while ((buf = readdir(dirp)) != NULL) {
-                if (buf->d_name[0] != '.')
-                    if (lstat(name = mx_namejoin(D->data, buf->d_name),
-                        &buf2) >= 0) {
+                if (buf->d_name[0] != '.') {
+                    name = mx_namejoin(D->data, buf->d_name);
+                    if (lstat(name, &buf2) >= 0)
                         if (MX_ISDIR(buf2.st_mode))
-                            mx_push_back(&D, name = mx_namejoin(D->data,
-                                         buf->d_name));
-                    }
-                    // free(name);
+                            mx_push_dir(&D, name);
+                    free(name);
+                }
             }
             if (closedir(dirp) < 0)
                 exit(1);
