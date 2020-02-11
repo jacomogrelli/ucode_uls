@@ -24,8 +24,8 @@ static t_uls_out *get_a(t_uls_out *all, int *flags) {
             }
             if (closedir(dirp) < 0)
                 exit(1);
-            all = mx_t_uls_out_init(all);
         }
+        all = mx_t_uls_out_init(all);
     }
     all = ptr;
     all->D = head;
@@ -54,8 +54,8 @@ static t_uls_out *get_default(t_uls_out *all, int *flags) {
             }
             if (closedir(dirp) < 0)
                 exit(1);
-            all = mx_t_uls_out_init(all);
         }
+        all = mx_t_uls_out_init(all);
     }
     all = ptr;
     all->D = head;

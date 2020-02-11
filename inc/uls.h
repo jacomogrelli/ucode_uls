@@ -9,6 +9,7 @@
 #include <stdbool.h>
 #include <fcntl.h>
 #include <malloc/malloc.h>
+#include <errno.h>
 #include "libmx.h"
 //new for uls
 #include <dirent.h> //opendir, readdir, closedir
@@ -71,6 +72,7 @@ typedef struct s_lstat {
 } t_lstat;
 
 typedef struct s_uls_out {
+    bool err;
     t_list *E; //массив ошибок
     t_lstat *F; //массив файлов
     t_list *D; //массив папок
@@ -81,6 +83,7 @@ typedef struct s_uls_out {
 int mx_flag_check(int argc, char **argv, int **flags);
 t_list *mx_empty_flag(int *flags, char *dir);
 void mx_error_no_such(char *argv);
+void mx_error_pd(char *argv);
 t_list *mx_ascii_sort_list(t_list *lst);
 t_uls_out *mx_get_args(int argc, int flag, char **argv, int *flags);
 void mx_free_t_lstat (t_lstat *temp);
