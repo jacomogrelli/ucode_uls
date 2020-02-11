@@ -43,13 +43,11 @@ static t_list *get_default(t_list *D) {
                 if (buf->d_name[0] != '.')
                     if (lstat(name = mx_namejoin(D->data, buf->d_name),
                         &buf2) >= 0) {
-                        mx_strdel(&name);
-                        if (MX_ISDIR(buf2.st_mode)) {
+                        if (MX_ISDIR(buf2.st_mode))
                             mx_push_back(&D, name = mx_namejoin(D->data,
                                          buf->d_name));
-                            mx_strdel(&name);
-                        }
                     }
+                    // free(name);
             }
             if (closedir(dirp) < 0)
                 exit(1);
