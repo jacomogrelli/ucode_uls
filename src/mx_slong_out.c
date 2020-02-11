@@ -43,7 +43,10 @@ void mx_slong_out(t_lstat *F, int *flags, int max_size, int max_gr) {
     p_group(F, flags, max_gr);
     p_size(F, flags, max_size);
     p_time(F);
-    mx_print_nonprint_str(F->name);
+    if (!isatty(1))
+        mx_printstr(F->name);
+    else
+        mx_print_nonprint_str(F->name);
     p_link(F);
     mx_printstr("\n");
 }
