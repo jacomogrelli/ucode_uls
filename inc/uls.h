@@ -85,10 +85,8 @@ typedef struct s_uls_out {
 } t_uls_out;
 
 int mx_flag_check(int argc, char **argv, int **flags);
-t_list *mx_empty_flag(int *flags, char *dir);
 
 t_uls_out *mx_get_args(int argc, int flag, char **argv, int *flags);
-void mx_free_t_lstat (t_lstat *temp);
 int mx_get_winsize(void);
 char *mx_namejoin(char *name1, char *name2);
 t_uls_out *mx_t_uls_out_init(t_uls_out *all);
@@ -137,8 +135,6 @@ void mx_error_no_such(char *argv);
 void mx_error_pd(char *argv);
 
 // utils
-void mx_default_l(t_lstat *o);
-void mx_print_l(t_list *D, int *flags);
 char *mx_flag_F(char *name, struct stat buf);
 t_list *mx_R(t_list *D, int *flags);
 t_uls_out *mx_sorty(t_uls_out *all, int *flags);
