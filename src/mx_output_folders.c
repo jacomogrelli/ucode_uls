@@ -7,8 +7,9 @@ static void error_dir (t_list *dirs, t_uls_out *all) {
 }
 
 static void p_dir(t_uls_out *dlist, int *flags, DIR *dp) {
-    if ((flags[mx_get_char_index(FLAGS, 'l')] ||
-         flags[mx_get_char_index(FLAGS, 'o')]) && dlist->Dlist)
+    if (((flags[mx_get_char_index(FLAGS, 'l')] ||
+         flags[mx_get_char_index(FLAGS, 'o')]) &&
+         !flags[mx_get_char_index(FLAGS, 'm')]) && dlist->Dlist)
          mx_output_total(dlist->Dlist);
     mx_output_files(dlist->Dlist, flags);
     if (dlist->next->next)

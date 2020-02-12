@@ -15,6 +15,9 @@ void mx_output_files(t_lstat *F, int *flags) {
             else
                 mx_multicol_out(F1);
         }
+        else if (flags[mx_get_char_index(FLAGS, 'm')] &&
+                 flags[mx_get_char_index(FLAGS, 'l')])
+            mx_m_out(F);
         else
             mx_long_out(F1, flags);
     }
