@@ -19,7 +19,7 @@ int main (int argc, char **argv) {
     mx_output_files(all->F, flags);
     mx_output_folders(all, flags, argc, flag_count);
     mx_uls_cleaner(all);
-    // system("leaks -q uls");
+    system("leaks uls");
     if (all->E || all->err)
         return 1;
     return 0;
