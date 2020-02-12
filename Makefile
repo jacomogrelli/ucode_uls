@@ -17,7 +17,6 @@ SRC		=	main.c \
 			mx_flag_check.c \
 			mx_empty_flag.c \
 			mx_error_no_such.c \
-			mx_ascii_sort_list.c \
 			mx_lstat_fill.c \
 			mx_get_owner.c \
 			mx_get_mtime.c \
@@ -62,6 +61,21 @@ SRC		=	main.c \
 			mx_print_dname.c \
 			mx_error_pd.c \
 			mx_push_dir.c \
+			mx_sort_dirs.c \
+			mx_sort_dirs_ascii.c \
+			mx_sort_dirs_size.c \
+			mx_sort_dirs_utime.c \
+			mx_sort_dirs_time.c \
+			mx_ascii_sort_list.c \
+			mx_data_swap.c \
+			mx_char_swap.c \
+			mx_int_swap.c \
+			mx_time_swap.c \
+			mx_size_swap.c \
+			mx_sort_files.c \
+			mx_sort_files_size.c \
+			mx_sort_files_ascii.c \
+			mx_sort_files_time.c \
 
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))

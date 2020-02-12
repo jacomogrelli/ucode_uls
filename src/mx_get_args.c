@@ -43,6 +43,6 @@ t_uls_out *mx_get_args(int argc, int flag, char **argv, int *flags) {
     }
     if (flags[mx_get_char_index(FLAGS, 'R')])
         res->D = mx_R(res->D, flags);
-    mx_ascii_sort_list(res->D);
+    mx_sort_dirs(res->D, flags);
     return res;
 }

@@ -21,7 +21,7 @@
 #include <sys/ioctl.h> //ioctl
 #include <sys/xattr.h> //listxattr, getxattr
 
-#define FLAGS "AFRldou1" // add any flag while realizing
+#define FLAGS "AFRSldortu1" // add any flag while realizing
 
 // Флаги формата вывода
 // -A - almost all - выдавать все файлы, включая скрытые, кроме `.' и `..'
@@ -36,6 +36,8 @@
 
 // Флаги сортировки
 // -t — сортировать по показываемому временному штампу.
+// -S - сортировать по размеру
+// -r - сортировка в обратном порядке
 
 //------macros pack for definition of type------
 #define MX_ISBLK(m)      (((m) & S_IFMT) == S_IFBLK)  /* 'b'lock special */
@@ -66,7 +68,9 @@ typedef struct s_lstat {
     int total;     //количество выделенных блоков
     // char *atime;    /* время последнего доступа */
     char *mtime;            //time_t st_mtime, время последней модификации
-    // time_t        st_ctime;    /* время последнего изменения */
+    time_t st_time;    //время для сортировки
+    time_t st_time_nsec; //время для сортировки
+    off_t st_size; //размер для сортировки
     // struct s_lstat *next;
     struct s_lstat *next;
 } t_lstat;
@@ -82,15 +86,30 @@ typedef struct s_uls_out {
 
 int mx_flag_check(int argc, char **argv, int **flags);
 t_list *mx_empty_flag(int *flags, char *dir);
-void mx_error_no_such(char *argv);
-void mx_error_pd(char *argv);
-t_list *mx_ascii_sort_list(t_list *lst);
+
 t_uls_out *mx_get_args(int argc, int flag, char **argv, int *flags);
 void mx_free_t_lstat (t_lstat *temp);
 int mx_get_winsize(void);
 char *mx_namejoin(char *name1, char *name2);
 t_uls_out *mx_t_uls_out_init(t_uls_out *all);
 void mx_push_dir(t_list **list, void *data);
+
+//------sort pack------
+void mx_sort_dirs(t_list *dirs, int *flags);
+void mx_sort_dirs_size(t_list *dirs, int *flags);
+void mx_sort_dirs_ascii(t_list *lst, int *flags);
+void mx_sort_dirs_time(t_list *dirs, int *flags);
+void mx_sort_dirs_utime(t_list *dirs, int *flags);
+t_list *mx_ascii_sort_list(t_list *lst);
+void mx_sort_files(t_lstat *files, int *flags);
+void mx_sort_files_size(t_lstat *files, int *flags);
+void mx_sort_files_time(t_lstat *files, int *flags);
+void mx_sort_files_ascii(t_lstat *files, int *flags);
+void mx_data_swap(t_lstat *s1, t_lstat *s2);
+void mx_char_swap(char **s1, char **s2);
+void mx_int_swap(int *i1, int *i2);
+void mx_time_swap(time_t *i1, time_t *i2);
+void mx_size_swap(off_t *i1, off_t *i2);
 
 //------Filling any information about file/link/dir pack------
 t_lstat *mx_lstat_fill(struct stat buf, char *argv, int *flags, bool r);
@@ -105,15 +124,17 @@ char *mx_get_size(struct stat buf);
 char mx_get_perm_10(char *path);
 int mx_get_total(struct stat buf);
 t_uls_out *mx_get_dirlist(t_uls_out *all, int *flags);
+void mx_push_stat(t_lstat **list, void *data);
 
 
 //------Output pack------
 void mx_output_error(t_list *err);
 void mx_output_files(t_lstat *out, int *flags);
-void mx_push_stat(t_lstat **list, void *data);
 // void mx_output_folders(t_list *out, int *flags);
 void mx_output_folders(t_uls_out *all, int *flags, int ac, int flag);
 void mx_output_total(t_lstat *Dlist);
+void mx_error_no_such(char *argv);
+void mx_error_pd(char *argv);
 
 // utils
 void mx_default_l(t_lstat *o);

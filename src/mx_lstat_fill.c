@@ -19,7 +19,13 @@ t_lstat *mx_lstat_fill(struct stat buf, char *argv, int *flags, bool r) {
     res->group = mx_get_group(buf.st_gid);
     res->mtime = mx_get_mtime(buf, flags);
     res->total = mx_get_total(buf);
-    // res->dirlist = NULL;
+    res->st_size = buf.st_size;
+    res->st_time = buf.st_mtimespec.tv_sec;
+    res->st_time_nsec = buf.st_mtimespec.tv_nsec;
+    if (flags[mx_get_char_index(FLAGS, 'u')]) {
+        res->st_time = buf.st_atimespec.tv_sec;
+        res->st_time_nsec = buf.st_atimespec.tv_nsec;
+    }
     res->next = NULL;
     return res;
 }
