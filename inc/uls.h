@@ -21,7 +21,7 @@
 #include <sys/ioctl.h> //ioctl
 #include <sys/xattr.h> //listxattr, getxattr
 
-#define FLAGS "AFRSldortu1" // add any flag while realizing
+#define FLAGS "AFGRSldmortu1" // add any flag while realizing
 
 // Флаги формата вывода
 // -A - almost all - выдавать все файлы, включая скрытые, кроме `.' и `..'
@@ -160,5 +160,6 @@ int mx_get_max_size(t_lstat *N); // for mx_long_out
 void mx_print_nonprint_str(const char *s);
 // --------------- output dirs
 void mx_print_dname(char *dname);
+void mx_m_out(t_lstat *F);
 
 #endif
