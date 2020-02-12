@@ -2,10 +2,14 @@
 
 static int get_max_links(t_lstat *F) {
 	int max_size = 0;
+    char *k = NULL;
 
-    for (; F != NULL; F = F->next)
-        if (max_size < mx_strlen(mx_itoa(F->nlink)))
-            max_size = mx_strlen(mx_itoa(F->nlink));
+    for (; F != NULL; F = F->next) {
+        k = mx_itoa(F->nlink);
+        if (max_size < mx_strlen(k))
+            max_size = mx_strlen(k);
+        free(k);
+    }
     return max_size;
 }
 

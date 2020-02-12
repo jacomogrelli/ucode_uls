@@ -1,9 +1,12 @@
 #include "uls.h"
 
 static void p_links(t_lstat *F, int max_links) {
-    mx_space(max_links - mx_strlen(mx_itoa(F->nlink)));
+    char *k = mx_itoa(F->nlink);
+
+    mx_space(max_links - mx_strlen(k));
     mx_printint(F->nlink); // links
     mx_printstr(" ");
+    free(k);
 }
 
 static void p_owner(t_lstat *F, int max_own) {
