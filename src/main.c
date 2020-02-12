@@ -17,7 +17,6 @@ int main (int argc, char **argv) {
     all = mx_sorty(all, flags);
     mx_output_error(all->E);
     mx_output_files(all->F, flags);
-    // mx_printlist(all->D);
     mx_output_folders(all, flags, argc, flag_count);
     mx_uls_cleaner(all);
     // system("leaks -q uls");
