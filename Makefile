@@ -15,7 +15,6 @@ INCS	=	$(addprefix $(INCD)/, $(INC))
 
 SRC		=	main.c \
 			mx_flag_check.c \
-			mx_empty_flag.c \
 			mx_error_no_such.c \
 			mx_lstat_fill.c \
 			mx_get_owner.c \
@@ -28,7 +27,6 @@ SRC		=	main.c \
 			mx_get_size.c \
 			mx_get_perm_10.c \
 			mx_get_args.c \
-			mx_free_t_lstat.c \
 			mx_get_winsize.c \
 			mx_output_error.c \
 			mx_output_files.c \
@@ -37,9 +35,7 @@ SRC		=	main.c \
 			mx_get_dirlist.c \
 			mx_namejoin.c \
 			mx_get_total.c \
-			mx_print_l.c \
 			mx_flag_F.c \
-			mx_default_l.c \
 			mx_R.c \
 			mx_t_uls_out_init.c \
 			mx_sorty.c \
@@ -76,6 +72,7 @@ SRC		=	main.c \
 			mx_sort_files_size.c \
 			mx_sort_files_ascii.c \
 			mx_sort_files_time.c \
+			mx_m_out.c \
 
 
 SRCS	=	$(addprefix $(SRCD)/, $(SRC))
