@@ -1,7 +1,19 @@
-# uls
+#ucodeworld
+#unit.factory
+#uls
 
 Developed by ucode students:
-Vladyslav Slipchenko (ucode nickname vslipchenko, email ...)
-Oleksiy Nechaiev (ucode nickname onechaiev, email nechaeff@gmail.com)
+Oleksiy Nechaiev (onechaiev, nechaeff@gmail.com)
+Andriy Ilchuk (ailchuk, an_ilchuk27@gmail.com)
 
-https://lms.ucode.world/api/media/pdf/uls/7l0hz.pdf
+Our implementation of the Unix command: ls, using the C programming language.
+
+Developed with:
+MacOS X Mojave 10.14.5 (other OS not tested)
+clang
+GNU make
+
+how to use:
+0. clone repo
+1. make
+2. usage: uls [-AFGRSldmortu1] [file ...]

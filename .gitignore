@@ -2,9 +2,10 @@
 ._.DS_Store
 *.o
 *.out
-*.pdf
 .vscode
 a.out
 *.dSYM
 libmx.a
 uls
+git_help.txt
+start.sh
