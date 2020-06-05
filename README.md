@@ -3,8 +3,7 @@
 #uls
 
 Developed by ucode students:
-Oleksiy Nechaiev (onechaiev, nechaeff@gmail.com)
-Andrii Ilchuk (ailchuk, )
+Oleksiy Nechaiev (onechaiev, nechaeff@gmail.com), Andrii Ilchuk [@ailchuk](https://github.com/ailchuk)
 
 Our implementation of the Unix command: ls, using the C programming language.
 
